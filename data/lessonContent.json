@@ -862,6 +862,111 @@
       ],
       "references": "Liggett – Interacting Particle Systems; Grimmett – Percolation (chapters 1‑3)",
       "assessment": "Simulate the contact process on a 2‑D lattice; compute critical percolation probability via Monte-Carlo"
-    }
+    },
+  {
+    "unitNumber": 22,
+    "title": "Free Probability & Non‑Commutative Probability",
+    "duration": "2 weeks",
+    "prereqs": "Units 7, 13 (measure theory, random matrices)",
+    "objectives": [
+      "Introduce probability on non‑commutative algebras, motivated by random matrix limits"
+    ],
+    "coreTopics": [
+      {
+        "id": "u22_t1",
+        "title": "Non‑commutative probability spaces, states, free independence",
+        "content": "👶 **For a 5‑year‑old:** \\nImagine a magical box of toys where the order you take them out matters. The box has a rule (a *state*) that tells you how likely each toy is to appear. Two boxes are *freely independent* when, loosely speaking, the way you pick toys from one box doesn’t affect the other, even though the order matters.\\n\\n🎒 **For a teen:** \\nA non‑commutative probability space is a pair \\((\\mathcal{A},\\phi)\\) where \\(\\mathcal{A}\\) is a unital \\(*\\)-algebra (e.g., matrices) and \\(\\phi:\\mathcal{A}\\to\\mathbb{C}\\) is a state (a linear functional with \\(\\phi(1)=1\\)). Sub‑algebras \\(\\mathcal{A}_1,\\dots,\\mathcal{A}_n\\) are *freely independent* if for any centered elements \\(a_j\\in\\mathcal{A}_{i_j}\\) with \\(\\phi(a_j)=0\\) and adjacent indices distinct, we have \\(\\phi(a_1a_2\\dots a_k)=0\\).\\n\\n📚 **For a university student:** \\nFormally, a non‑commutative probability space \\((\\mathcal{A},\\phi)\\) consists of a unital \\(*\\)-algebra (often a von Neumann algebra) equipped with a faithful, tracial state \\(\\phi\\). Free independence (Voiculescu) generalizes classical independence: for sub‑algebras \\(\\mathcal{A}_1,\\dots,\\mathcal{A}_n\\subseteq\\mathcal{A}\\), they are free if \\(\\phi(a_1\\cdots a_k)=0\\) whenever \\(a_j\\in\\mathcal{A}_{i_j}\\), \\(\\phi(a_j)=0\\), and \\(i_j\\neq i_{j+1}\\) for all \\(j\\). This notion is central to the asymptotic behaviour of large random matrices.",
+        "chart": "none"
+      },
+      {
+        "id": "u22_t2",
+        "title": "Free additive and multiplicative convolutions",
+        "content": "👶 **For a 5‑year‑old:** \\nWhen you put two piles of colorful blocks together, the way the colors mix follows a special rule called *free convolution*. It’s like a magical way of blending piles without ever looking at the individual blocks.\\n\\n🎒 **For a teen:** \\nIf \\(X\\) and \\(Y\\) are freely independent random variables (or operators), the distribution of \\(X+Y\\) is given by the *free additive convolution* \\(\\mu_X\\,\\boxplus\\,\\mu_Y\\). Similarly, the distribution of the product \\(XY\\) (for positive operators) is given by the *free multiplicative convolution* \\(\\mu_X\\,\\boxtimes\\,\\mu_Y\\). These operations replace the classical convolution that appears for independent random variables.\\n\\n📚 **For a university student:** \\nGiven freely independent self‑adjoint elements \\(X,Y\\) in a non‑commutative probability space with distributions \\(\\mu_X,\\mu_Y\\), their sum \\(X+Y\\) has distribution \\(\\mu_X\\boxplus\\mu_Y\\) defined via the additive free convolution; analogously, for freely independent positive elements the product \\(XY\\) has distribution \\(\\mu_X\\boxtimes\\mu_Y\\). The transforms described in the next topic linearize these convolutions: \\(R_{\\mu_X\\boxplus\\mu_Y}=R_{\\mu_X}+R_{\\mu_Y}\\) and \\(S_{\\mu_X\\boxtimes\\mu_Y}=S_{\\mu_X}S_{\\mu_Y}\\).",
+        "chart": "none"
+      },
+      {
+        "id": "u22_t3",
+        "title": "R transform, S transform",
+        "content": "👶 **For a 5‑year‑old:** \\nThink of a secret code (the R‑transform) that lets you add two piles of blocks quickly, and another code (the S‑transform) that helps you multiply piles.\\n\\n🎒 **For a teen:** \\nThe *R‑transform* of a distribution \\(\\mu\\) is defined via the Cauchy (Stieltjes) transform \\(G_\\mu(z)=\\int\\frac{1}{z-x}\\,d\\mu(x)\\). Its functional inverse \\(K_\\mu(w)=G_\\mu^{-1}(w)\\) yields \\(R_\\mu(w)=K_\\mu(w)-\\frac{1}{w}\\). The R‑transform linearizes free additive convolution: \\(R_{\\mu\\boxplus\\nu}=R_\\mu+R_\\nu\\).\\nThe *S‑transform* applies to probability measures on \\([0,\\infty)\\) with non‑zero mean and is defined by \\(M_\\mu(z)=\\sum_{n\\ge1}\\kappa_n z^n\\) (the moment‑generating series) and \\(S_\\mu(z)=\\frac{1+z}{z}\\,M_\\mu^{-1}(z)\\). It linearizes free multiplicative convolution: \\(S_{\\mu\\boxtimes\\nu}=S_\\mu S_\\nu\\).\\n\\n📚 **For a university student:** \\nFormally, let \\(G_\\mu(z)=\\int\\frac{1}{z-t}\\,d\\mu(t)\\) be the Cauchy transform; its functional inverse \\(K_\\mu(w)=G_\\mu^{-1}(w)\\) (defined near \\(0\\)) gives the R‑transform \\(R_\\mu(w)=K_\\mu(w)-\\frac{1}{w}\\). The additive free convolution satisfies \\(R_{\\mu\\boxplus\\nu}=R_\\mu+R_\\nu\\). For compactly supported \\(\\mu\\) on \\([0,\\infty)\\) with non‑zero first moment, define the moment‑generating series \\(M_\\mu(z)=\\sum_{n\\ge1} m_n z^{n-1}\\) where \\(m_n\\) are moments; the S‑transform is \\(S_\\mu(z)=\\frac{1+z}{z}\\,M_\\mu^{-1}(z)\\). Then \\(S_{\\mu\\boxtimes\\nu}=S_\\mu\\,S_\\nu\\). These transforms provide practical tools for computing free convolutions, especially for classical distributions such as the semicircle or Marchenko–Pastur law.",
+        "chart": "none"
+      },
+      {
+        "id": "u22_t4",
+        "title": "Applications: asymptotic eigenvalue distributions of large random matrices, Voiculescu’s theorem",
+        "content": "👶 **For a 5‑year‑old:** \\nIf you draw a huge picture made of tiny squares (a matrix), the colors of the squares settle into a recognizable pattern when the picture gets really big. Free probability helps predict that pattern.\\n\\n🎒 **For a teen:** \\nVoiculescu’s asymptotic freeness theorem states that independent random matrix ensembles (e.g., Wigner matrices, Haar‑unitary matrices) become freely independent as their size \\(N\\to\\infty\\). Consequently, the empirical eigenvalue distribution of the sum \\(X+Y\\) of two independent large Wigner matrices converges to the free additive convolution of their individual limits (both semicircle laws), which is again a semicircle law.\\n\\n📚 **For a university student:** \\nVoiculescu proved that for sequences of independent random matrices \\(\\{X_N^{(i)}\\}_{i=1}^k\\) satisfying suitable moment conditions (e.g., i.i.d. centered entries with variance \\(1/N\\)), the families become *asymptotically free* in the sense that for any non‑commutative polynomial \\(P\\) we have \\(\\lim_{N\\to\\infty}\\frac{1}{N}\\mathrm{Tr}\\,P(X_N^{(1)},\\dots,X_N^{(k)}) = \\phi(P)\\) where \\(\\phi\\) is evaluated on a free family of non‑commutative random variables with the same limiting distributions. This yields that the limiting spectral distribution of \\(X_N+Y_N\\) is \\(\\mu_{X}\\boxplus\\mu_{Y}\\), and similar results hold for products via the S‑transform. Applications include computing the eigenvalue distribution of large covariance matrices (Marchenko–Pastur law) and establishing universality classes in random matrix theory.",
+        "chart": "none"
+      }
+    ],
+    "references": "Nica & Speicher – Lectures on the Combinatorics of Free Probability (chapters 1, 3); Tao – Free Probability and Random Matrices (selected sections)",
+    "assessment": "Compute free convolution of two semicircle laws using the R transform; demonstrate numerically that eigenvalue distribution of a sum of large independent Wigner matrices converges to the free additive convolution; brief report on connections to operator algebras"
+  },
+  {
+    "unitNumber": 23,
+    "title": "Advanced Topics in Stochastic Geometry (Optional)",
+    "duration": "1 week",
+    "prereqs": "Units 12, 21",
+    "objectives": [
+      "Explore random geometric structures (Poisson Voronoi, Boolean models)"
+    ],
+    "coreTopics": [
+      {
+        "id": "u23_t1",
+        "title": "Poisson point processes in \\(\\mathbb{R}^d\\), Palm calculus",
+        "content": "👶 **For a 5‑year‑old:**  \nImagine sprinkling tiny stickers all over a huge floor.  Some stickers land close together, some far apart, and we can count how many fall into any region you point to.  Palm calculus is a way of looking at the picture *as if we already know there is a sticker right where we stand* and then asking what the rest of the sprinkling looks like.\\n\\n🎒 **For a teen:**  \nA homogeneous Poisson point process (PPP) on \\(\\mathbb{R}^d\\) with intensity \\(\\lambda>0\\) is a random set of points such that for any bounded Borel set \\(A\\), the number of points \\(N(A)\\) follows a Poisson distribution with mean \\(\\lambda|A|\\) and counts in disjoint sets are independent.  The Palm measure describes the distribution of the process *conditioned* on having a point at a prescribed location.  For a PPP the reduced Palm distribution coincides with the original law (Slivnyak’s theorem), which makes many calculations tractable.\\n\\n📚 **For a university student:**  \nFormally, let \\(\\Phi\\) be a simple point process on \\(\\mathbb{R}^d\\).  \\(\\Phi\\) is a homogeneous PPP of intensity \\(\\lambda\\) iff for every bounded Borel region \\(A\\)\n\\[N_{\\Phi}(A)\\sim\\text{Poisson}(\\lambda|A|)\\]\nand for disjoint \\(A_1,\\dots,A_k\\) the random variables \\(N_{\\Phi}(A_i)\\) are independent.  The (reduced) Palm probability \\(\\mathbb{P}^x\\) satisfies the Campbell formula\n\\[\\mathbb{E}\\sum_{y\\in\\Phi}f(y,\\Phi)=\\lambda\\int_{\\mathbb{R}^d}\\mathbb{E}^{x}[f(x,\\Phi)]\\,dx\\]\nand Slivnyak’s theorem states that for a PPP \\(\\mathbb{P}^{x}=\\mathbb{P}\\).  Consequently, expectations conditioned on a point at the origin can be computed by simply inserting the point into the original process and using the usual PPP properties.",
+        "chart": "none"
+      },
+      {
+        "id": "u23_t2",
+        "title": "Random tessellations and coverage processes",
+        "content": "👶 **For a 5‑year‑old:**  \nIf you draw a line from each sticker to the nearest other sticker, the floor gets split into funny puzzle‑shaped pieces.  When you put a tiny blanket over each sticker, the blankets may overlap – that’s a coverage process.\\n\\n🎒 **For a teen:**  \nA *Poisson–Voronoi tessellation* partitions \\(\\mathbb{R}^d\\) into cells where each cell consists of all locations closer to a given PPP point than to any other.  The dual *Delaunay triangulation* joins points whose Voronoi cells share a face.  A *Boolean model* (or germ–grain model) places i.i.d. random compact sets (the “grains”, e.g., balls) centered at the points of a PPP; the union of the grains is the *coverage region*.\\n\\n📚 **For a university student:**  \nLet \\(\\Phi\\) be a homogeneous PPP of intensity \\(\\lambda\\) on \\(\\mathbb{R}^d\\).  The Voronoi cell of a point \\(x\\in\\Phi\\) is \\[V(x)=\\{y\\in\\mathbb{R}^d:\\|y-x\\|\\le \\|y-z\\| \\;\\forall\\;z\\in\\Phi\\}.\\]  Its volume \\(|V|\\) has mean \\(\\mathbb{E}|V|=1/\\lambda\\) and known distributional properties (e.g., moments derived via the Meijer's G‑function).  The Boolean model with grain distribution \\(K\\) yields coverage probability for a fixed location \\[p_c=1-\\exp\\bigl(-\\lambda \\mathbb{E}\\bigl[|K|\\bigr]\\bigr)\\] when \\(K\\) is a ball of random radius.  Higher‑order characteristics (e.g., two‑point correlation) are obtained from the contact distribution and the inclusion–exclusion principle.",
+        "chart": "none"
+      },
+      {
+        "id": "u23_t3",
+        "title": "Applications: wireless network modeling, materials science",
+        "content": "👶 **For a 5‑year‑old:**  \nPhones in a playground talk to each other if they are close enough.  By pretending the phones are stickers and the talking range is a tiny blanket, we can see who can hear whom.\\n\\n🎒 **For a teen:**  \nIn stochastic geometry‑based wireless network analysis, the locations of base stations or users are often modeled as a PPP.  The signal‑to‑interference‑plus‑noise ratio (SINR) coverage probability can be derived analytically using the Boolean model of coverage disks and the Laplace transform of interference.  In materials science, grain microstructures are modeled by Poisson–Voronoi tessellations; mechanical properties such as strength or permeability can be linked to statistical descriptors of cell size and shape.\\n\\n📚 **For a university student:**  \nConsider a downlink cellular network where base stations form a PPP \\(\\Phi\\) of intensity \\(\\lambda\\) and each transmits with power \\(P\\).  Assuming standard path‑loss \\(\\|x\\|^{-\\alpha}\\) and Rayleigh fading, the SINR coverage probability for a threshold \\(\\theta\\) at a typical user is\\[p_c(\\theta)=\\int_{0}^{\\infty}\\exp\\bigl(-\\pi \\lambda r^2 (1+\\rho(\\theta,\\alpha))\\bigr)\\,2\\pi\\lambda r\\,dr,\\] where \\(\\rho(\\theta,\\alpha)=\\theta^{2/\\alpha}\\int_{\\theta^{-2/\\alpha}}^{\\infty}\\frac{du}{1+u^{\\alpha/2}}\\).  For polycrystalline materials, the grain size distribution is often approximated by the volume distribution of Poisson–Voronoi cells, and effective conductivity \\(\\kappa_{\\text{eff}}\\) can be estimated via \\(\\kappa_{\\text{eff}}\\approx \\kappa_m \\bigl(1+\\frac{\\phi_g}{1-\\phi_g}\\bigr)\\) where \\(\\phi_g\\) is the grain volume fraction.",
+        "chart": "none"
+      }
+    ],
+    "references": "Stoyan, Kendall & Mecke – Stochastic Geometry and its Applications (chapters 2, 4)",
+    "assessment": "Simulate a planar Poisson–Voronoi diagram; compute mean cell area via simulation and compare to analytic value"
+  },
+  {
+    "unitNumber": 24,
+    "title": "Capstone Project / Research Exploration",
+    "duration": "2–4 weeks",
+    "prereqs": "Completion of a substantial subset of Units 1‑23 (choose depth according to student interests)",
+    "objectives": [
+      "Integrate theory, computation, and exposition into a self‑contained project"
+    ],
+    "coreTopics": [
+      {
+        "id": "u24_t1",
+        "title": "Problem definition & literature review",
+        "content": "👶 **For a 5‑year‑old:**  \nFirst you pick a question you’re curious about – like “why do some pictures look fuzzy?” – and read a few storybooks about it.\\n\\n🎒 **For a teen:**  \nIdentify a concrete statistical or probabilistic problem (e.g., calibrating a jump‑diffusion model to market prices).  Perform a concise literature survey to locate the state‑of‑the‑art methods, key assumptions, and open challenges.  Write a short problem statement that specifies data, goals, and success criteria.\\n\\n📚 **For a university student:**  \nFormulate a well‑posed research question \n\\[\\text{Given data }\\mathcal{D},\\;\\text{estimate/learn }\\Theta\\text{ under model }\\mathcal{M}_{\\Theta}\\]\\nand justify its relevance in a broader context (e.g., financial econometrics, high‑dimensional inference, random matrix statistics, Bayesian non‑parametrics).  Conduct a systematic review using databases (arXiv, Google Scholar) and organize references with a citation manager.  Summarize theoretical prerequisites (e.g., concentration inequalities, free probability, MCMC) and outline expected contributions.",
+        "chart": "none"
+      },
+      {
+        "id": "u24_t2",
+        "title": "Probabilistic modeling & methodological design",
+        "content": "👶 **For a 5‑year‑old:**  \nYou decide what rules the game will follow – like throwing dice in a special way – so the game matches the question you asked.\\n\\n🎒 **For a teen:**  \nChoose an appropriate probabilistic framework (e.g., a jump‑diffusion SDE, a sparse recovery formulation with an \\(\\ell_1\\) penalty, or a Dirichlet‑process mixture).  Derive the key equations (likelihood, prior, posterior) and decide on an inference strategy (MCMC, variational Bayes, convex optimization).\\n\\n📚 **For a university student:**  \nDevelop the mathematical model rigorously.  For a jump‑diffusion, specify the Lévy measure \\(\\nu\\) and write the SDE \\[dS_t = \\mu S_t\\,dt + \\sigma S_t\\,dW_t + S_{t-}\\,dJ_t\\] with \\(J_t\\) a compound Poisson jump process.  Define the likelihood \\(p(\\mathcal{D}\\mid\\theta)\\) and prior \\(p(\\theta)\\).  Select an inference algorithm (e.g., particle MCMC for latent jumps, ADMM for sparse recovery, or collapsed Gibbs for DP clustering).  Justify the choice by discussing computational complexity, convergence guarantees, and scalability.",
+        "chart": "none"
+      },
+      {
+        "id": "u24_t3",
+        "title": "Implementation, experimentation & reproducibility",
+        "content": "👶 **For a 5‑year‑old:**  \nYou build a toy that follows the rules and then play with it many times to see what happens.\\n\\n🎒 **For a teen:**  \nWrite clean, modular code (Python, R, or Julia) that implements the model and inference algorithm.  Use version control (Git) and package managers (conda, renv) so anyone can run the notebook and reproduce the figures.  Run experiments: data‑fit, sensitivity analysis, and compare against baselines.\\n\\n📚 **For a university student:**  \nStructure the project as a reproducible Jupyter (or RMarkdown) notebook.  Include: data import/cleaning, model specification, inference routine (e.g., Stan model, PyMC3, custom Gibbs sampler), diagnostics (trace plots, ESS, Gelman–Rubin), and validation (posterior predictive checks, out‑of‑sample forecast).  Document the computational environment (Python 3.11, libraries, hardware).  Perform systematic experiments varying hyper‑parameters, sample size, and noise level; summarize results in tables and confidence‑interval plots.  Provide a Dockerfile or binder link for one‑click reproducibility.",
+        "chart": "none"
+      },
+      {
+        "id": "u24_t4",
+        "title": "Reporting, presentation & critical discussion",
+        "content": "👶 **For a 5‑year‑old:**  \nAfter playing, you tell your friends what you saw and draw a picture of the most interesting part.\\n\\n🎒 **For a teen:**  \nWrite a concise 10‑page report: introduce the problem, describe the model, explain the inference method, present results (tables/plots), and discuss what the findings mean.  Create a short slide deck (optional) that tells the story visually.\\n\\n📚 **For a university student:**  \nCompose a scholarly report (≈ 10 pages) with sections: Introduction, Related Work, Model & Theory, Algorithms, Experiments, Results, Discussion, and Conclusion.  Include rigorous derivations (e.g., ELBO expression, convergence proof sketch, concentration bound used).  Critically evaluate limitations, potential extensions, and reproducibility considerations.  Prepare a 10‑15‑slide presentation (LaTeX beamer or PowerPoint) that highlights motivation, methodology, key results, and future directions.  Submit the code repository (GitHub/GitLab) together with a DOI via Zenodo for archival.",
+        "chart": "none"
+      }
+    ],
+    "references": "Kallenberg – Foundations of Modern Probability (selected chapters); Murphy – Probabilistic Machine Learning (chapters 2‑5); Eldar & Kutyniok – Compressed Sensing (chapter 2); Goodfellow, Bengio & Courville – Deep Learning (chapter 12); Relevant recent arXiv papers for the chosen theme.",
+    "assessment": "Deliverables: (1) Written report (~10 pages) with background, methodology, results, and discussion; (2) Executable code (Python/R/Julia) with a reproducible notebook; (3) Optional presentation slides.  Grading criteria: (a) depth of probabilistic insight, (b) correctness and efficiency of implementation, (c) clarity of exposition, (d) originality of the chosen problem or solution."
+  }
   ]
 }
