@@ -1,0 +1,867 @@
+{
+  "units": [
+    {
+      "unitNumber": 0,
+      "title": "Mathematical Prerequisites",
+      "duration": "1 week",
+      "prereqs": "None (or high school math)",
+      "objectives": [
+        "Manipulate sets, functions, and basic combinatorics",
+        "Use limits, derivatives, integrals, and linear algebra basics"
+      ],
+      "coreTopics": [
+        {
+          "id": "u0_t1",
+          "title": "Set Theory & Mappings",
+          "content": "👶 **For a 5‑year‑old:**  \nThink of a set as a toy box. All the toys you put in the box belong together, and you can take them out one by one.\n\n🎒 **For a teen:**  \nA *set* is a collection of distinct objects. Operations such as union (putting two boxes together), intersection (what toys both boxes share), and complement (everything that's *not* in the box) let us build new sets. A *mapping* (or function) pairs each element of one set with exactly one element of another – like assigning each student a locker number.\n\n📚 **For a university student:**  \nFormally, a set \\(A\\) is a well‑defined collection of elements. The power set \\(\\mathcal{P}(A)\\) comprises all subsets of \\(A\\). A function \\(f:X\\to Y\\) satisfies \\(\\forall x\\in X\\;\\exists!\\;y\\in Y\\) with \\(f(x)=y\\). These notions underpin σ‑algebras and measurable spaces in probability.",
+          "chart": "none"
+        },
+        {
+          "id": "u0_t2",
+          "title": "Counting Principles",
+          "content": "👶 **For a 5‑year‑old:**  \nImagine you have 3 red blocks and 2 blue blocks. How many ways can you line them up? You can \"count without counting\" using clever tricks.\n\n🎒 **For a teen:**  \nThe *addition principle* says if you can do task A in \\(m\\) ways and task B in \\(n\\) ways after A, then there are \\(m\\cdot n\\) ways to do A + B. The *multiplication principle* (permutations) counts orderings; *combinations* count selections where order doesn't matter. The inclusion–exclusion principle corrects over‑counting when sets overlap.\n\n📚 **For a university student:**  \nIf \\(\\{A_i\\}_{i=1}^k\\) are finite sets, \\(|\\bigcup_{i=1}^k A_i| = \\sum_i|A_i| - \\sum_{i<j}|A_i\\cap A_j| + \\cdots +(-1)^{k+1}|\\bigcap_{i=1}^k A_i|\\). Permutations: \\(P(n,r)=\\frac{n!}{(n-r)!}\\). Combinations: \\(\\binom{n}{r}= \\frac{n!}{r!(n-r)!}\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u0_t3",
+          "title": "Real Analysis Review",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you walk slowly from one end of the playground to the other, think about how many tiny steps you need – that's the idea of a limit.\n\n🎒 **For a teen:**  \nA *limit* describes the value a sequence or function approaches as its index or input grows without bound. Continuity means you can draw the graph without lifting your pen. These ideas let us define derivatives (instantaneous change) and integrals (area under a curve) rigorously.\n\n📚 **For a university student:**  \n\\(\\lim_{n\\to\\infty}x_n = L \\iff \\forall\\varepsilon>0\\;\\exists N:\\;n\\ge N\\Rightarrow|x_n-L|<\\varepsilon\\). A function \\(f:\\mathbb R\\to\\mathbb R\\) is continuous at \\(c\\) iff \\(\\lim_{x\\to c}f(x)=f(c)\\). The derivative \\(f'(c)=\\lim_{h\\to 0}\\frac{f(c+h)-f(c)}{h}\\). The Riemann integral \\(\\int_a^b f(x)\\,dx\\) is defined via limits of Riemann sums.",
+          "chart": "none"
+        },
+        {
+          "id": "u0_t4",
+          "title": "Linear Algebra Refresher",
+          "content": "👶 **For a 5‑year‑old:**  \nA vector is like an arrow that tells you how far to walk east and north. Adding two arrows means you walk one after the other.\n\n🎒 **For a teen:**  \nVectors are ordered lists of numbers; matrices are grids that transform vectors. Multiplying a matrix by a vector rotates, stretches, or shears the arrow. Eigenvectors point in directions that stay unchanged except for scaling (the eigenvalue).\n\n📚 **For a university student:**  \nLet \\(\\mathbf v\\in\\mathbb R^n\\) and \\(A\\in\\mathbb R^{m\\times n}\\). The linear map \\(A\\) acts via \\(A\\mathbf v\\). An eigenpair \\((\\lambda,\\mathbf x)\\) satisfies \\(A\\mathbf x=\\lambda\\mathbf x\\). Spectral theorems and the singular‑value decomposition are crucial for multivariate statistics and dimensionality reduction.",
+          "chart": "none"
+        }
+      ],
+      "references": "Mathematics for Machine Learning – Chapters 1‑2; Principles of Mathematical Analysis (Rudin) – §1‑2",
+      "assessment": "Worksheet on combinatorial problems, proofs of set identities, and a mini‑project coding a combinatorial calculator"
+    },
+    {
+      "unitNumber": 1,
+      "title": "Foundations of Probability",
+      "duration": "2 weeks",
+      "prereqs": "Unit 0",
+      "objectives": [
+        "State Kolmogorov's axioms and construct probability spaces",
+        "Compute probabilities of simple events using counting and basic formulas"
+      ],
+      "coreTopics": [
+        {
+          "id": "u1_t1",
+          "title": "Sample Spaces & Events",
+          "content": "👶 **For a 5‑year‑old:**  \nImagine you have a bag of colored marbles. The *sample space* is the whole bag – everything that could possibly be drawn. An *event* is any smaller group, like \"the marble is red\".\n\n🎒 **For a teen:**  \nA sample space \\(\\Omega\\) contains every outcome of an experiment. An event \\(A\\subseteq\\Omega\\) is a set of outcomes. A σ‑algebra \\(\\mathcal F\\) is a collection of events that contains \\(\\Omega\\), is closed under complements and countable unions, providing the structure needed for a probability measure.\n\n📚 **For a university student:**  \nA probability space is \\((\\Omega,\\mathcal F,\\mathbb P)\\) where \\(\\mathcal F\\) is a σ‑algebra on \\(\\Omega\\) and \\(\\mathbb P:\\mathcal F\\to[0,1]\\) satisfies Kolmogorov's axioms. Events are measurable sets, enabling rigorous definitions of conditional probability and expectation.",
+          "chart": "none"
+        },
+        {
+          "id": "u1_t2",
+          "title": "Axioms of Probability",
+          "content": "👶 **For a 5‑year‑old:**  \nYou can't have a negative amount of candy and you can't have more than the whole bag. Those simple rules are the \"axioms\".\n\n🎒 **For a teen:**  \nThe three Kolmogorov axioms are: 1. *Non‑negativity* – \\(\\mathbb P(A)\\ge0\\). 2. *Normalization* – \\(\\mathbb P(\\Omega)=1\\). 3. *Countable additivity* – if \\(\\{A_i\\}\\) are disjoint, \\(\\mathbb P(\\cup_i A_i)=\\sum_i\\mathbb P(A_i)\\).\n\n📚 **For a university student:**  \nFormally, for any countable collection \\(\\{A_i\\}\\subseteq\\mathcal F\\) with \\(A_i\\cap A_j=\\varnothing\\) when \\(i\\neq j\\), \\(\\mathbb P(\\bigcup_{i=1}^{\\infty}A_i)=\\sum_{i=1}^{\\infty}\\mathbb P(A_i)\\). All other probability rules follow from these axioms.",
+          "chart": "none"
+        },
+        {
+          "id": "u1_t3",
+          "title": "Interpretations of Probability",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you flip a coin many times, the fraction of heads you see gets close to \"half\". That's one way to think about chance.\n\n🎒 **For a teen:**  \nThree main interpretations: 1. *Classical* – equally likely outcomes. 2. *Frequentist* – long‑run relative frequencies. 3. *Subjective* – personal degree of belief, updated via Bayes' theorem.\n\n📚 **For a university student:**  \nIn the Kolmogorov framework, probability is an abstract measure; interpretations guide how we model \\(\\mathbb P\\). The *subjective* Bayesian view treats \\(\\mathbb P\\) as a prior that is updated with data via Bayes' theorem, whereas the *frequentist* view treats \\(\\mathbb P\\) as a limiting relative frequency.",
+          "chart": "none"
+        },
+        {
+          "id": "u1_t4",
+          "title": "Conditional Probability & Bayes' Theorem",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you already know the box contains a red marble, the chance of picking a red one becomes 100%. That's \"conditional\".\n\n🎒 **For a teen:**  \nConditional probability \\(\\mathbb P(A\\mid B)=\\frac{\\mathbb P(A\\cap B)}{\\mathbb P(B)}\\) gives the odds of \\(A\\) once you know \\(B\\) happened. Bayes' theorem flips this: \\(\\mathbb P(B\\mid A)=\\frac{\\mathbb P(A\\mid B)\\mathbb P(B)}{\\mathbb P(A)}\\).\n\n📚 **For a university student:**  \nBayes' formula underlies statistical inference: the posterior distribution \\(\\pi(\\theta\\mid x)\\propto L(x\\mid\\theta)\\pi(\\theta)\\), where \\(L\\) is the likelihood and \\(\\pi\\) the prior. It connects likelihood and prior, enabling updates of belief in light of data.",
+          "chart": "none"
+        },
+        {
+          "id": "u1_t5",
+          "title": "Independence of Events",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you roll a die and flip a coin, what happens with the die never changes what the coin shows – they're independent.\n\n🎒 **For a teen:**  \nTwo events \\(A,B\\) are independent if \\(\\mathbb P(A\\cap B)=\\mathbb P(A)\\mathbb P(B)\\). Independence dramatically simplifies calculations and models many real‑world phenomena.\n\n📚 **For a university student:**  \nIndependence extends to σ‑algebras: σ‑algebras \\(\\mathcal A,\\mathcal B\\subseteq\\mathcal F\\) are independent if \\(\\mathbb P(A\\cap B)=\\mathbb P(A)\\mathbb P(B)\\) for every \\(A\\in\\mathcal A,B\\in\\mathcal B\\). Pairwise independence does **not** imply mutual independence.",
+          "chart": "none"
+        }
+      ],
+      "references": "Ross – A First Course in Probability (Ch. 1‑3)",
+      "assessment": "Problem set on dice, cards, urn models, and Bayes' theorem applications"
+    },
+    {
+      "unitNumber": 2,
+      "title": "Discrete Random Variables & Distributions",
+      "duration": "2 weeks",
+      "prereqs": "Unit 1",
+      "objectives": [
+        "Define pmf, cdf, expectation for discrete RVs",
+        "Model real‑world counting processes"
+      ],
+      "coreTopics": [
+        {
+          "id": "u2_t1",
+          "title": "Discrete RVs",
+          "content": "👶 **For a 5‑year‑old:**  \nThink of a dice – it can land on 1, 2, 3, 4, 5 or 6. Those are the only possibilities.\n\n🎒 **For a teen:**  \nA discrete random variable \\(X\\) takes values in a countable set \\(\\mathcal X\\). Its probability mass function (pmf) \\(p_X(x)=\\mathbb P(X=x)\\) gives the chance of each outcome. The cumulative distribution function (cdf) \\(F_X(x)=\\mathbb P(X\\le x)\\) accumulates those probabilities.\n\n📚 **For a university student:**  \n\\(X:\\Omega\\to\\mathcal X\\subseteq\\mathbb R\\) is measurable with respect to the discrete σ‑algebra on \\(\\mathcal X\\). The pmf satisfies \\(\\sum_{x\\in\\mathcal X}p_X(x)=1\\) and uniquely determines the law of \\(X\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u2_t2",
+          "title": "Expectation & Variance",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you roll a die lots of times and write down the number each time, the *average* you get after a long time is the expectation.\n\n🎒 **For a teen:**  \n\\(\\mathbb E[X]=\\sum_{x}x\\,p_X(x)\\), \\(\\operatorname{Var}(X)=\\mathbb E[(X-\\mathbb E[X])^2]\\). Higher moments (skewness, kurtosis) describe shape; generating functions are powerful tools.\n\n📚 **For a university student:**  \nFor any measurable \\(g:\\mathbb R\\to\\mathbb R\\), \\(\\mathbb E[g(X)]=\\sum_{x}g(x)p_X(x)\\) whenever the sum converges absolutely. The moment‑generating function \\(M_X(t)=\\mathbb E[e^{tX}]\\) encodes all moments via \\(M_X^{(k)}(0)=\\mathbb E[X^k]\\) when it exists.",
+          "chart": "none"
+        },
+        {
+          "id": "u2_t3",
+          "title": "Common Discrete Distributions",
+          "content": "👶 **For a 5‑year‑old:**  \n- *Coin flip* → Bernoulli (0 or 1).  \n- *Rolling a die many times* → Binomial (how many sixes).  \n- *Counting cars that pass a street* → Poisson (rare events).\n\n🎒 **For a teen:**  \n- **Bernoulli**\\((p)\\): \\(P(X=1)=p,\\;P(X=0)=1-p\\).  \n- **Binomial**\\((n,p)\\): \\(P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}\\).  \n- **Geometric**\\((p)\\): \\(P(X=k)=(1-p)^{k-1}p\\) (trials to first success).  \n- **Negative Binomial**, **Hypergeometric**, **Poisson** each have specific combinatorial origins.\n\n📚 **For a university student:**  \nThese families belong to the exponential family: \\(p_\\theta(x)=h(x)\\exp\\{\\eta(\\theta)^\\top T(x)-A(\\theta)\\}\\), facilitating conjugate Bayesian analysis and large‑sample approximations.",
+          "chart": "none"
+        },
+        {
+          "id": "u2_t4",
+          "title": "Sums of Independent RVs",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you throw two dice and add the numbers, you can get more possibilities than with a single die.\n\n🎒 **For a teen:**  \nThe distribution of a sum \\(S=X+Y\\) of independent \\(X,Y\\) is the *convolution* of their pmf's: \\(p_S(s)=\\sum_{x}p_X(x)p_Y(s-x)\\). Convolution builds many compound distributions.\n\n📚 **For a university student:**  \nUsing probability generating functions (pgf) \\(G_X(z)=\\mathbb E[z^{X}]\\), we have \\(G_{X+Y}(z)=G_X(z)G_Y(z)\\). This correspondence simplifies proofs of limit theorems and enables analytical derivations.",
+          "chart": "none"
+        }
+      ],
+      "references": "Ross – Ch. 4‑5; Grimmett & Stirzaker – Probability and Random Processes",
+      "assessment": "Compute expectations, variances, and MGFs; simulate Poisson arrivals"
+    },
+    {
+      "unitNumber": 3,
+      "title": "Continuous Random Variables & Distributions",
+      "duration": "2 weeks",
+      "prereqs": "Unit 2, calculus (differentiation & integration)",
+      "objectives": [
+        "Work with pdfs, cdfs, and transformation techniques",
+        "Apply continuous distributions to real‑world phenomena"
+      ],
+      "coreTopics": [
+        {
+          "id": "u3_t1",
+          "title": "Continuous RVs",
+          "content": "👶 **For a 5‑year‑old:**  \nImagine the height of all your classmates. It can be any number between, say, 1 m and 2 m – not just whole numbers.\n\n🎒 **For a teen:**  \nA continuous random variable \\(X\\) has a probability density function (pdf) \\(f_X\\) such that \\(\\mathbb P(a<X<b)=\\int_a^b f_X(x)\\,dx\\). Its cdf is \\(F_X(x)=\\int_{-\\infty}^x f_X(t)\\,dt\\).\n\n📚 **For a university student:**  \n\\(X\\) is measurable w.r.t. the Borel σ‑algebra on \\(\\mathbb R\\). Absolute continuity of the law of \\(X\\) w.r.t. Lebesgue measure yields a pdf \\(f_X\\) with \\(\\int_{\\mathbb R}f_X=1\\) a.e. Then \\(F_X\\) is a.s. differentiable and \\(F'_X=f_X\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u3_t2",
+          "title": "Expectation & Change of Variables",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you want the average height, you add up all the heights you see and divide by how many you looked at.\n\n🎒 **For a teen:**  \n\\(\\mathbb E[g(X)]=\\int_{-\\infty}^{\\infty}g(x)f_X(x)\\,dx\\). When you transform \\(Y=g(X)\\) (with \\(g\\) monotone and differentiable), \\(f_Y(y)=f_X(g^{-1}(y))|\\frac{d}{dy}g^{-1}(y)|\\).\n\n📚 **For a university student:**  \nThe change‑of‑variables theorem for Lebesgue integrals provides the above formula. For non‑monotone \\(g\\), sum over all pre‑images. This is essential when deriving distributions of functions of random variables.",
+          "chart": "none"
+        },
+        {
+          "id": "u3_t3",
+          "title": "Common Continuous Distributions",
+          "content": "👶 **For a 5‑year‑old:**  \n- *Uniform*: all heights between 1 m and 2 m are equally likely.  \n- *Exponential*: waiting time between buses – short gaps are common, long gaps are rare.  \n- *Normal*: most people's heights cluster around a middle value, forming the famous bell curve.\n\n🎒 **For a teen:**  \nKey families: Uniform\\((a,b)\\), Exponential\\((\\lambda)\\), Gamma\\((k,\\theta)\\), Beta\\((\\alpha,\\beta)\\), Normal\\((\\mu,\\sigma^2)\\). Each has a simple pdf, mean, variance, and typical applications.\n\n📚 **For a university student:**  \nAll belong to the exponential family, with natural parameter \\(\\eta\\) and sufficient statistic \\(T(x)\\). The Normal distribution maximizes entropy among all distributions with fixed mean and variance.",
+          "chart": "normal_distribution"
+        },
+        {
+          "id": "u3_t4",
+          "title": "Joint Distributions",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you look at both height and weight together, you can draw a picture where each dot shows one child's height and weight.\n\n🎒 **For a teen:**  \nA joint pdf \\(f_{X,Y}(x,y)\\) satisfies \\(\\int_{\\mathbb R^2}f_{X,Y}=1\\). Marginals: \\(f_X(x)=\\int_{\\mathbb R}f_{X,Y}(x,y)\\,dy\\). Conditional pdf: \\(f_{X\\mid Y}(x\\mid y)=\\frac{f_{X,Y}(x,y)}{f_Y(y)}\\).\n\n📚 **For a university student:**  \nIf \\((X,Y)\\) is absolutely continuous w.r.t. Lebesgue measure on \\(\\mathbb R^2\\), then the density exists almost everywhere. Copulas separate marginal behavior from dependence: \\(F_{X,Y}(x,y)=C(F_X(x),F_Y(y))\\), where \\(C\\) is a copula function.",
+          "chart": "none"
+        }
+      ],
+      "references": "Ross – Ch. 6‑7; Casella & Berger – Statistical Inference",
+      "assessment": "Derive pdf of sum of independent exponentials; use Monte Carlo estimation"
+    },
+    {
+      "unitNumber": 4,
+      "title": "Multivariate Probability",
+      "duration": "2 weeks",
+      "prereqs": "Units 2‑3",
+      "objectives": [
+        "Model joint behavior of several RVs",
+        "Understand dependence structures (covariance, correlation, copulas)"
+      ],
+      "coreTopics": [
+        {
+          "id": "u4_t1",
+          "title": "Joint & Marginal Distributions",
+          "content": "👶 **For a 5‑year‑old:**  \nThink of a pair of socks – each sock has a colour, and you can talk about the colour of the left sock, the right sock, or both together.\n\n🎒 **For a teen:**  \nA random vector \\(\\mathbf X=(X_1,\\dots,X_d)\\) has a joint pdf \\(f_{\\mathbf X}\\). The marginal of \\(X_i\\) is obtained by integrating out the other coordinates. Knowledge of all marginals does *not* uniquely determine the joint unless independence holds.\n\n📚 **For a university student:**  \nIf \\(\\mu\\) denotes Lebesgue measure on \\(\\mathbb R^d\\) and \\(\\mathbf X\\) has law \\(\\mu_{\\mathbf X}\\ll\\mu\\), then for any Borel set \\(A\\), \\(\\mathbb P(\\mathbf X\\in A)=\\int_A f_{\\mathbf X}(\\mathbf x)\\,d\\mu(\\mathbf x)\\). Marginals are projections: \\(f_{X_i}(x_i)=\\int_{\\mathbb R^{d-1}}f_{\\mathbf X}(\\mathbf x)\\,d\\mathbf x_{-i}\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u4_t2",
+          "title": "Covariance & Correlation",
+          "content": "👶 **For a 5‑year‑old:**  \nIf tall friends also tend to be heavy, the two measurements \"go together\".\n\n🎒 **For a teen:**  \nCovariance \\(\\operatorname{Cov}(X,Y)=\\mathbb E[(X-\\mu_X)(Y-\\mu_Y)]\\) measures linear association. Correlation \\(\\rho_{XY}=\\frac{\\operatorname{Cov}(X,Y)}{\\sigma_X\\sigma_Y}\\) rescales it to \\([-1,1]\\).\n\n📚 **For a university student:**  \nThe covariance matrix \\(\\Sigma = (\\operatorname{Cov}(X_i,X_j))_{i,j}\\) is symmetric positive‑semi‑definite. For any vector \\(\\mathbf a\\), \\(\\operatorname{Var}(\\mathbf a^\\top\\mathbf X)=\\mathbf a^\\top\\Sigma\\mathbf a\\). Principal Component Analysis (PCA) diagonalises \\(\\Sigma\\) to find orthogonal directions of maximal variance.",
+          "chart": "none"
+        },
+        {
+          "id": "u4_t3",
+          "title": "Multivariate Normal Distribution",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you draw lots of points on a piece of paper and they cluster around a centre, that cloud looks like a 2‑D \"bell‑shaped\" picture.\n\n🎒 **For a teen:**  \n\\(\\mathbf X\\sim\\mathcal N(\\boldsymbol\\mu,\\Sigma)\\) has pdf \\(f_{\\mathbf X}(\\mathbf x)=\\frac{1}{\\sqrt{(2\\pi)^d|\\Sigma|}}\\exp(-\\tfrac12(\\mathbf x-\\boldsymbol\\mu)^\\top\\Sigma^{-1}(\\mathbf x-\\boldsymbol\\mu))\\). Every linear combination of its components is again normal.\n\n📚 **For a university student:**  \nMultivariate normality is characterised by the fact that all marginal and conditional distributions are normal. Independence ⇔ diagonal covariance. The multivariate CLT states that properly normalised sums of i.i.d. \\(\\mathbb R^d\\)‑valued vectors converge in distribution to \\(\\mathcal N(\\mathbf 0,\\Sigma)\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u4_t4",
+          "title": "Transformation of Vectors",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you spin a piece of paper with a drawing on it, the whole picture moves together – that's a transformation.\n\n🎒 **For a teen:**  \nGiven \\(\\mathbf Y=g(\\mathbf X)\\) with \\(g:\\mathbb R^d\\to\\mathbb R^k\\) differentiable and invertible, the pdf of \\(\\mathbf Y\\) is obtained via the Jacobian determinant: \\(f_{\\mathbf Y}(\\mathbf y)=f_{\\mathbf X}(g^{-1}(\\mathbf y))|\\det J_{g^{-1}}(\\mathbf y)|\\). If \\(g\\) is not globally invertible, sum over all pre‑images.\n\n📚 **For a university student:**  \nThe change‑of‑variables theorem for Lebesgue integrals yields the above formula. When \\(g\\) is smooth and bijective, \\(J_g(\\mathbf x)=\\frac{\\partial(g_1,\\dots,g_k)}{\\partial(x_1,\\dots,x_d)}\\). This machinery is essential for deriving distributions of norms, ratios, and other functions of random vectors.",
+          "chart": "none"
+        }
+      ],
+      "references": "Anderson – An Introduction to Multivariate Statistical Analysis; Ross – sections on joint distributions",
+      "assessment": "Compute conditional distributions for a bivariate normal; simulate a 3D Gaussian"
+    },
+    {
+      "unitNumber": 5,
+      "title": "Expectation, Moments & Inequalities",
+      "duration": "1 week",
+      "prereqs": "Units 2‑4",
+      "objectives": [
+        "Master tools for bounding probabilities and expectations"
+      ],
+      "coreTopics": [
+        {
+          "id": "u5_t1",
+          "title": "Advanced Expectation",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you have a jar of candies, the \"average\" number you expect to get when you close your eyes is the expected value.\n\n🎒 **For a teen:**  \nThe *law of the unconscious statistician* (LOTUS) lets you compute \\(\\mathbb E[g(X)]\\) without knowing the distribution of \\(g(X)\\) directly: integrate \\(g\\) against the pdf/pmf of \\(X\\).\n\n📚 **For a university student:**  \nIf \\(X\\) has law \\(\\mu_X\\) and \\(g\\) is measurable, \\(\\mathbb E[g(X)]=\\int_{\\mathbb R}g(x)\\,\\mu_X(dx)\\). The *tower property* (law of iterated expectations) states \\(\\mathbb E[\\mathbb E[Y\\mid\\mathcal G]]=\\mathbb E[Y]\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u5_t2",
+          "title": "Key Inequalities",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you know the average number of candies, you can say the chance of getting *much* more than average is small – that's what an inequality does.\n\n🎒 **For a teen:**  \n- *Markov*: \\(\\mathbb P(X\\ge a)\\le\\frac{\\mathbb E[X]}{a}\\).  \n- *Chebyshev*: bounds variance‑based tail probabilities.  \n- *Jensen*: for convex \\(\\phi\\), \\(\\phi(\\mathbb E[X])\\le\\mathbb E[\\phi(X)]\\).\n\n📚 **For a university student:**  \nThese inequalities stem from convexity and measure‑theoretic arguments. They are the workhorses for proving convergence results, concentration, and risk bounds. Advanced forms include Chernoff, Hoeffding, and Bernstein bounds.",
+          "chart": "none"
+        },
+        {
+          "id": "u5_t3",
+          "title": "Applications to Tail Bounds",
+          "content": "👶 **For a 5‑year‑old:**  \nImagine you roll a die a lot. The chance you see a huge streak of sixes is tiny – tail bounds tell you exactly how tiny.\n\n🎒 **For a teen:**  \nChernoff bounds give exponential decay of \\(\\mathbb P(S_n\\ge(1+\\delta)\\mu)\\) for sums of independent RVs. Hoeffding's inequality refines this for bounded variables. Such bounds are the backbone of algorithms that need \"probably‑almost‑sure\" guarantees.\n\n📚 **For a university student:**  \nFor i.i.d. \\(X_i\\) with mgf \\(M_X(t)=\\mathbb E[e^{tX}]\\), \\(\\mathbb P(S_n\\ge a)\\le\\inf_{t>0}e^{-ta}M_X(t)^n\\). Optimising over \\(t\\) yields the Chernoff exponent. These ideas are central in large‑deviation theory and modern learning theory.",
+          "chart": "none"
+        }
+      ],
+      "references": "Durrett – Probability: Theory and Examples (Chapter 1, Section 1.6)",
+      "assessment": "Prove Chebyshev's inequality; apply Chernoff bound to Binomial tails"
+    },
+    {
+      "unitNumber": 6,
+      "title": "Classical Limit Theorems",
+      "duration": "2 weeks",
+      "prereqs": "Units 1‑5",
+      "objectives": [
+        "Understand convergence concepts and the foundations of inferential statistics"
+      ],
+      "coreTopics": [
+        {
+          "id": "u6_t1",
+          "title": "Types of Convergence",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you keep drawing closer and closer to the same picture, you are \"converging\".\n\n🎒 **For a teen:**  \n- *Almost sure*: \\(\\mathbb P(\\lim X_n = X)=1\\).  \n- *In probability*: for any \\(\\varepsilon>0\\), \\(\\mathbb P(|X_n-X|>\\varepsilon)\\to0\\).  \n- *In distribution*: cdf's converge at continuity points.  \n- *\\(L^p\\)*: \\(\\mathbb E[|X_n-X|^p]\\to0\\).\n\n📚 **For a university student:**  \nThe hierarchy is a.s. ⇒ in prob. ⇒ in distribution, and \\(L^p\\) convergence implies convergence in probability (by Markov). Understanding these modes is crucial for proving limit theorems and for asymptotic statistics.",
+          "chart": "none"
+        },
+        {
+          "id": "u6_t2",
+          "title": "Laws of Large Numbers",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you flip a coin many, many times, the proportion of heads gets closer and closer to ½.\n\n🎒 **For a teen:**  \n- *Weak LLN*: sample mean converges in probability to the true mean.  \n- *Strong LLN*: convergence almost surely (with probability 1). Both require only finite expectations (or a little extra moment control).\n\n📚 **For a university student:**  \nKolmogorov's SLLN uses independence and the condition \\(\\sum \\frac{\\operatorname{Var}(X_i)}{i^2}<\\infty\\). The WLLN follows from Chebyshev's inequality. These theorems justify Monte‑Carlo estimation and underpin frequentist inference.",
+          "chart": "none"
+        },
+        {
+          "id": "u6_t3",
+          "title": "Central Limit Theorem",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you pile many tiny random blocks together, the shape of the pile looks like a smooth hill – that hill is the normal curve.\n\n🎒 **For a teen:**  \nThe *CLT* says that for i.i.d. \\(X_i\\) with mean \\(\\mu\\) and variance \\(\\sigma^2\\), \\(\\frac{S_n-n\\mu}{\\sigma\\sqrt{n}}\\xrightarrow{d}\\mathcal N(0,1)\\). Even if the original distribution is very skewed, the normalised sum becomes bell‑shaped.\n\n📚 **For a university student:**  \nLindeberg‑Feller extends the CLT to non‑identically distributed arrays via the Lindeberg condition. The CLT provides asymptotic normality of many estimators and underlies confidence‑interval construction.",
+          "chart": "none"
+        }
+      ],
+      "references": "Billingsley – Probability and Measure (Ch. 2); Durrett – Chapter 2",
+      "assessment": "Prove WLLN for i.i.d. bounded RVs; simulate CLT for various distributions"
+    },
+    {
+      "unitNumber": 7,
+      "title": "Introduction to Measure Theory & Lebesgue Integration",
+      "duration": "3 weeks",
+      "prereqs": "Unit 0, calculus, basic set theory; (optional: a first course in real analysis)",
+      "objectives": [
+        "Build a rigorous foundation for probability as a measure on a σ‑algebra",
+        "Master Lebesgue integration, which underpins modern probability"
+      ],
+      "coreTopics": [
+        {
+          "id": "u7_t1",
+          "title": "σ‑algebras & Measurable Spaces",
+          "content": "👶 **For a 5‑year‑old:**  \nThink of a σ‑algebra as a magic box that only lets in certain collections of toys, but once a collection is inside, you can split it, glue it, or flip it upside‑down and it still stays inside.\n\n🎒 **For a teen:**  \nA σ‑algebra \\(\\mathcal F\\) on a set \\(\\Omega\\) satisfies: (i) \\(\\Omega\\in\\mathcal F\\); (ii) closed under complements; (iii) closed under countable unions. The pair \\((\\Omega,\\mathcal F)\\) is a *measurable space* – the stage on which we can define a measure—a function that assigns a non‑negative \"size\" (like length, area, or probability) to each event in a consistent way.\n\n📚 **For a university student:**  \nσ‑algebras provide the minimal structure for countable additivity, enabling the Carathéodory extension theorem. Measurability of a map \\(X:\\Omega\\to\\mathbb R\\) means \\(X^{-1}(B)\\in\\mathcal F\\) for every Borel set \\(B\\), which is essential for defining random variables rigorously.",
+          "chart": "none"
+        },
+        {
+          "id": "u7_t2",
+          "title": "Outer Measure & Carathéodory's Theorem",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you can't measure a shape directly, you can cover it with little squares and count how many you need – that's an \"outer\" measure.\n\n🎒 **For a teen:**  \nAn outer measure \\(\\mu^*\\) assigns a non‑negative number to *all* subsets, satisfying monotonicity and countable sub‑additivity. Carathéodory's criterion selects those sets for which \\(\\mu^*(A)=\\mu^*(A\\cap E)+\\mu^*(A\\cap E^c)\\) holds for every \\(E\\subseteq\\Omega\\). The collection of such sets forms a σ‑algebra, and \\(\\mu^*\\) restricted to it becomes a genuine countably additive measure.\n\n📚 **For a university student:**  \nGiven a pre‑measure on an algebra \\(\\mathcal A\\), the Carathéodory extension yields a complete measure on the σ‑algebra generated by \\(\\mathcal A\\). This construction underlies Lebesgue measure on \\(\\mathbb R^n\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u7_t3",
+          "title": "Measurable Functions & Integration",
+          "content": "👶 **For a 5‑year‑old:**  \nA measurable function is like a rule that tells you which colour each toy should be, without breaking any of the magic‑box rules.\n\n🎒 **For a teen:**  \nA function \\(f:\\Omega\\to\\mathbb R\\) is measurable if \\(\\{f>c\\}\\in\\mathcal F\\) for every real \\(c\\). The Lebesgue integral builds from *simple functions* (finite linear combos of indicator functions) and extends to non‑negative measurable functions, then to integrable functions.\n\n📚 **For a university student:**  \nFor a non‑negative measurable \\(f\\), \\(\\int_\\Omega f\\,d\\mu = \\sup\\{\\int_\\Omega s\\,d\\mu : 0\\le s\\le f,\\;s\\text{ simple}\\}\\). The integral is linear, monotone, and satisfies the Monotone Convergence Theorem (MCT), Dominated Convergence Theorem (DCT), and Fatou's Lemma. It becomes the natural definition of expectation in probability theory.",
+          "chart": "none"
+        },
+        {
+          "id": "u7_t4",
+          "title": "Convergence Theorems (MCT, DCT, Fatou)",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you keep adding more and more slices of cake, the total you get approaches the whole cake – that's the idea behind letting limits and integrals swap places.\n\n🎒 **For a teen:**  \n- *Monotone Convergence*: if \\(0\\le f_n\\uparrow f\\) pointwise, then \\(\\int f_n\\to\\int f\\).  \n- *Dominated Convergence*: if \\(f_n\\to f\\) pointwise and \\(|f_n|\\le g\\) with \\(\\int g<\\infty\\), then \\(\\int f_n\\to\\int f\\).  \n- *Fatou*: \\(\\int\\liminf f_n\\le\\liminf\\int f_n\\).\n\n📚 **For a university student:**  \nThese theorems are indispensable for interchanging limits and expectations in stochastic analysis, proving limit theorems, and justifying many manipulations in probability. Their proofs rely on the completeness of \\(L^1(\\mu)\\) and the structure of simple functions.",
+          "chart": "none"
+        },
+        {
+          "id": "u7_t5",
+          "title": "Lebesgue Measure & Product Measures",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you paint a line of length 1 m, its \"size\" is 1. If you paint a square that's 1 m × 1 m, its \"size\" is 1 m² – that's area. Lebesgue measure is the systematic way to assign these sizes.\n\n🎒 **For a teen:**  \nLebesgue measure \\(\\lambda^n\\) extends the notion of length/area/volume to very irregular sets in \\(\\mathbb R^n\\). Product measures let us treat multi‑dimensional spaces by iterating one‑dimensional measures (Fubini's theorem).\n\n📚 **For a university student:**  \n\\(\\lambda^n\\) is the unique translation‑invariant complete Borel measure with \\(\\lambda^n([0,1]^n)=1\\). For σ‑finite spaces \\((X_i,\\mathcal F_i,\\mu_i)\\), the product measure \\(\\bigotimes_i\\mu_i\\) exists and satisfies \\(\\int f\\,d\\bigotimes_i\\mu_i = \\int\\cdots\\int f(x_1,\\dots,x_k)\\,d\\mu_1\\cdots d\\mu_k\\) (Fubini‑Tonelli).",
+          "chart": "none"
+        }
+      ],
+      "references": "Folland – Real Analysis (Ch. 1‑2); Billingsley – Probability and Measure (Chapter 1)",
+      "assessment": "Prove DCT and apply it to exchange limit & expectation; construct Lebesgue measure via Carathéodory"
+    },
+    {
+      "unitNumber": 8,
+      "title": "Probability in a Measure‑Theoretic Setting",
+      "duration": "2 weeks",
+      "prereqs": "Unit 7",
+      "objectives": [
+        "Translate discrete/continuous probability concepts into the measure‑theoretic language",
+        "Handle expectations, conditional expectations, independence, and distributions rigorously"
+      ],
+      "coreTopics": [
+        {
+          "id": "u8_t1",
+          "title": "Probability Spaces & Random Variables",
+          "content": "👶 **For a 5‑year‑old:**  \nImagine a huge bag of surprise eggs. The bag itself is the *world* (sample space). Each egg you open is an *outcome*. A random variable is a rule that reads the outcome and writes a number on a card (e.g., \"how many stickers? → 3\").\n\n🎒 **For a teen:**  \nA probability space \\((\\Omega,\\mathcal F,\\mathbb P)\\) equips a measurable space with a measure that totals 1. A random variable is a measurable map \\(X:\\Omega\\to\\mathbb R\\), turning outcomes into numbers we can analyse.\n\n📚 **For a university student:**  \nMeasurability ensures \\(X^{-1}(B)\\in\\mathcal F\\) for every Borel set \\(B\\). The *distribution* (or law) of \\(X\\) is the push‑forward measure \\(\\mu_X=\\mathbb P\\circ X^{-1}\\) on \\(\\mathbb R\\). This abstract viewpoint unifies discrete, continuous, and mixed cases and enables powerful tools such as the Radon–Nikodym derivative for conditional expectations.",
+          "chart": "none"
+        },
+        {
+          "id": "u8_t2",
+          "title": "Distribution & Law of a RV",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you look at the number of stickers on many eggs, you'll see some numbers appear more often than others – that's the *distribution*.\n\n🎒 **For a teen:**  \nThe law of \\(X\\) is the probability measure on \\(\\mathbb R\\) defined by \\(\\mu_X(A)=\\mathbb P(X\\in A)\\). It can be described by a pmf, a pdf, or a mixture of both.\n\n📚 **For a university student:**  \n\\(\\mu_X\\) uniquely determines expectations: for any measurable \\(g\\), \\(\\mathbb E[g(X)]=\\int_{\\mathbb R} g\\,d\\mu_X\\). Weak convergence of random variables ⇔ weak convergence of their laws (Portmanteau theorem).",
+          "chart": "none"
+        },
+        {
+          "id": "u8_t3",
+          "title": "Expectation as Lebesgue Integral",
+          "content": "👶 **For a 5‑year‑old:**  \nWhen you add up all the sticker numbers you see and then divide by how many eggs you opened, you get the *average* – that's the expected value.\n\n🎒 **For a teen:**  \n\\(\\mathbb E[X]=\\int_{\\Omega} X(\\omega)\\,\\mathbb P(d\\omega)\\). This is just the Lebesgue integral of \\(X\\) with respect to the probability measure.\n\n📚 **For a university student:**  \nIf \\(X\\in L^1(\\Omega,\\mathcal F,\\mathbb P)\\), then expectation is the Lebesgue integral \\(\\int X\\,d\\mathbb P\\). This definition works for discrete, continuous, and singular laws alike and is the cornerstone of modern probability theory.",
+          "chart": "none"
+        },
+        {
+          "id": "u8_t4",
+          "title": "Independence of σ‑algebras & RVs",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you roll a die and flip a coin, what you get on the die never changes what the coin shows – they're independent.\n\n🎒 **For a teen:**  \nTwo σ‑algebras \\(\\mathcal A,\\mathcal B\\subseteq\\mathcal F\\) are independent if \\(\\mathbb P(A\\cap B)=\\mathbb P(A)\\mathbb P(B)\\) for all \\(A\\in\\mathcal A,B\\in\\mathcal B\\). Random variables are independent when the σ‑algebras they generate are independent.\n\n📚 **For a university student:**  \nIf \\(X,Y\\) are independent, then for any bounded measurable \\(f,g\\), \\(\\mathbb E[f(X)g(Y)]=\\mathbb E[f(X)]\\mathbb E[g(Y)]\\). Independence of σ‑algebras enables the construction of product measures, which underpins Kolmogorov's extension theorem for infinite sequences of independent r.v.'s.",
+          "chart": "none"
+        },
+        {
+          "id": "u8_t5",
+          "title": "Conditional Expectation",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you know the die showed a 6, you can guess the coin is still 50‑50. That guess, based on extra information, is a *conditional* expectation.\n\n🎒 **For a teen:**  \n\\(\\mathbb E[X\\mid\\mathcal G]\\) is the best \\(\\mathcal G\\)‑measurable estimate of \\(X\\). It satisfies \\(\\int_G \\mathbb E[X\\mid\\mathcal G]\\,d\\mathbb P = \\int_G X\\,d\\mathbb P\\) for all \\(G\\in\\mathcal G\\).\n\n📚 **For a university student:**  \nConditional expectation is defined via the Radon–Nikodym theorem: there exists a \\(\\mathcal G\\)‑measurable \\(Y\\) such that \\(\\int_G Y\\,d\\mathbb P = \\int_G X\\,d\\mathbb P\\) for all \\(G\\in\\mathcal G\\), and we set \\(Y=\\mathbb E[X\\mid\\mathcal G]\\). It is a fundamental tool for martingales, stochastic processes, and Bayesian updating.",
+          "chart": "none"
+        }
+      ],
+      "references": "Durrett – Probability: Theory and Examples (Chapter 3); Kallenberg – Foundations of Modern Probability (Sections 1‑2)",
+      "assessment": "Formal proof that independence of σ‑algebras implies factorisation of expectations"
+    },
+    {
+      "unitNumber": 9,
+      "title": "Advanced Convergence & Refined Limit Theorems",
+      "duration": "2 weeks",
+      "prereqs": "Units 6, 8",
+      "objectives": [
+        "Deepen understanding of convergence modes, Lindeberg conditions, and functional limit theorems"
+      ],
+      "coreTopics": [
+        {
+          "id": "u9_t1",
+          "title": "Borel-Cantelli Lemmas",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you keep flipping a coin, the chance that you ever see 'heads, heads, heads' three times in a row is either zero or one, depending on how often you repeat the experiment.\n\n🎒 **For a teen:**  \n- *First lemma*: If \\(\\sum_{n}\\mathbb P(A_n)<\\infty\\), then \\(\\mathbb P(A_n\\ \\text{i.o.})=0\\).  \n- *Second lemma*: If the events are independent and \\(\\sum_{n}\\mathbb P(A_n)=\\infty\\), then \\(\\mathbb P(A_n\\ \\text{i.o.})=1\\).\n\n📚 **For a university student:**  \nThese lemmas connect series of probabilities with almost‑sure behaviour, providing key tools for proving a.s. convergence (e.g., SLLN) and for 0‑1 laws in probability.",
+          "chart": "none"
+        },
+        {
+          "id": "u9_t2",
+          "title": "Skorokhod Representation Theorem",
+          "content": "👶 **For a 5‑year‑old:**  \nImagine you have two pictures that look the same from far away. The theorem says we can redraw them on a new board so that they actually match perfectly.\n\n🎒 **For a teen:**  \nIf \\(X_n\\stackrel{d}{\\to}X\\), there exists a probability space and random variables \\(\\tilde X_n,\\tilde X\\) on it with the same distributions as the originals, such that \\(\\tilde X_n\\to\\tilde X\\) almost surely.\n\n📚 **For a university student:**  \nSkorokhod's construction is vital for transferring weak convergence results into almost‑sure convergence, allowing pathwise arguments (e.g., in stochastic integration) while preserving marginal laws.",
+          "chart": "none"
+        },
+        {
+          "id": "u9_t3",
+          "title": "Lindeberg-Feller Central Limit Theorem",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you add up lots of different‑shaped building blocks, the shape of the pile still becomes roundish, as long as no single block is too gigantic.\n\n🎒 **For a teen:**  \nConsider a triangular array \\(\\{X_{n,k}\\}\\) of independent, mean‑zero random variables with variances \\(\\sigma_{n,k}^2\\). *Lindeberg's condition* \\(\\forall\\varepsilon>0:\\sum_{k=1}^{n}\\mathbb E[X_{n,k}^2\\mathbf 1_{\\{|X_{n,k}|>\\varepsilon\\}}]\\xrightarrow{n\\to\\infty}0\\) is necessary and sufficient for convergence to normality.\n\n📚 **For a university student:**  \nThis theorem generalises the classical CLT to non‑identically distributed arrays, providing the most general set of hypotheses under which Gaussian limits appear. Proofs rely on characteristic functions and Taylor expansions.",
+          "chart": "none"
+        },
+        {
+          "id": "u9_t4",
+          "title": "Functional CLT (Donsker's Invariance Principle)",
+          "content": "👶 **For a 5‑year‑old:**  \nThink of a random walk as a child taking tiny steps left or right. If you zoom out and watch the whole path, it starts to look like a smooth wiggly line – that's Brownian motion!\n\n🎒 **For a teen:**  \nDonsker's theorem states that the *scaled* random walk \\(W_n(t)=\\frac{1}{\\sqrt{n}}\\sum_{k=1}^{\\lfloor nt\\rfloor} (X_k-\\mu)\\) converges in distribution to a standard Brownian motion \\(B(t)\\).\n\n📚 **For a university student:**  \nFormally, \\(W_n\\Rightarrow \\sigma B\\) in \\(D[0,1]\\) equipped with the \\(J_1\\)‑topology. This functional limit theorem is the foundation of stochastic calculus.",
+          "chart": "none"
+        }
+      ],
+      "references": "Billingsley – Convergence of Probability Measures (Ch. 2‑3); Durrett – Chapter 2, Section 2.4",
+      "assessment": "Verify Lindeberg condition for a given array of RVs; simulate Donsker's theorem"
+    },
+    {
+      "unitNumber": 10,
+      "title": "Martingales, Stopping Times & Optional Sampling",
+      "duration": "2 weeks",
+      "prereqs": "Unit 8, basic measure theory, conditional expectation",
+      "objectives": [
+        "Understand martingale structures, powerful inequalities, and their role in modern probability"
+      ],
+      "coreTopics": [
+        {
+          "id": "u10_t1",
+          "title": "Filtrations, Adapted Processes, & Martingales",
+          "content": "👶 **For a 5‑year‑old:**  \nImagine playing a fair game where your expected winnings tomorrow are exactly what you have today – that's a martingale!\n\n🎒 **For a teen:**  \nA filtration is an increasing sequence of σ‑algebras representing the flow of information over time. A process is 'adapted' if its value at any time is known given the information up to that time. A martingale is an adapted process whose expected future value equals its current value.\n\n📚 **For a university student:**  \nA process \\(\\{X_n,\\mathcal F_n\\}\\) is a martingale if \\(\\mathbb E[X_{n+1}\\mid\\mathcal F_n]=X_n\\) a.s. This models 'fair games' and has profound implications for stochastic analysis.",
+          "chart": "none"
+        },
+        {
+          "id": "u10_t2",
+          "title": "Martingale Convergence Theorems",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you keep playing a fair game, your fortune will eventually settle down to some stable amount.\n\n🎒 **For a teen:**  \nMartingale convergence theorems provide conditions under which a martingale is guaranteed to converge to a limit as time goes to infinity. Doob's upcrossing inequality is the key technical tool.\n\n📚 **For a university student:**  \nIf \\(\\{X_n\\}\\) is an \\(L^1\\)-bounded submartingale, then \\(X_n\\to X_\\infty\\) a.s. where \\(X_\\infty\\) is integrable. This is the martingale analogue of the SLLN.",
+          "chart": "none"
+        },
+        {
+          "id": "u10_t3",
+          "title": "Optional Stopping Theorem",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you stop playing a fair game at a random time (but not based on future information), your expected winnings are the same as when you started.\n\n🎒 **For a teen:**  \nThe Optional Stopping Theorem states conditions under which \\(\\mathbb E[X_\\tau]=\\mathbb E[X_0]\\) for a stopping time \\(\\tau\\). Doob's maximal inequalities provide powerful bounds on the maximum value a martingale is likely to attain.\n\n📚 **For a university student:**  \nIf \\(\\tau\\) is a bounded stopping time and \\(X_n\\) is a martingale, then \\(\\mathbb E[X_\\tau]=\\mathbb E[X_0]\\). The theorem fails for unbounded stopping times without additional conditions.",
+          "chart": "none"
+        },
+        {
+          "id": "u10_t4",
+          "title": "Azuma-Hoeffding Inequality",
+          "content": "👶 **For a 5‑year‑old:**  \nEven in a fair game, the chance of winning or losing a huge amount is extremely small if each step is small.\n\n🎒 **For a teen:**  \nThe Azuma-Hoeffding inequality gives exponential tail bounds for martingales with bounded differences, providing concentration results similar to Chernoff bounds but in more general settings.\n\n📚 **For a university student:**  \nIf \\(\\{X_n\\}\\) is a martingale with \\(|X_k-X_{k-1}|\\le c_k\\), then \\(\\mathbb P(|X_n-X_0|\\ge t)\\le 2\\exp(-t^2/(2\\sum c_k^2))\\). This is fundamental in concentration of measure theory.",
+          "chart": "none"
+        },
+        {
+          "id": "u10_t5",
+          "title": "Applications of Martingales",
+          "content": "👶 **For a 5‑year‑old:**  \nMartingales help us understand games, gambling strategies, and even how populations evolve over time.\n\n🎒 **For a teen:**  \nMartingale theory has applications in gambling (proving you can't beat a fair game), convergence of series, and provides elegant proofs of the Strong Law of Large Numbers.\n\n📚 **For a university student:**  \nMartingales are used in financial mathematics (option pricing), statistical inference (sequential testing), and the theory of stochastic processes (Brownian motion as a continuous-time martingale).",
+          "chart": "none"
+        }
+      ],
+      "references": "Williams – Probability with Martingales (entire book)",
+      "assessment": "Prove Doob's optional stopping for bounded stopping time; use Azuma inequality to bound deviation"
+    },
+    {
+      "unitNumber": 11,
+      "title": "Discrete-Time Stochastic Processes (Markov Chains)",
+      "duration": "2 weeks",
+      "prereqs": "Unit 10 (martingale intuition optional), basic linear algebra",
+      "objectives": [
+        "Model and analyze memoryless processes in discrete time"
+      ],
+      "coreTopics": [
+        {
+          "id": "u11_t1",
+          "title": "Definition of a Markov Chain",
+          "content": "👶 **For a 5‑year‑old:**  \nA Markov chain is like a game where your next move depends only on where you are now, not how you got there.\n\n🎒 **For a teen:**  \nA Markov chain is a stochastic process that possesses the 'memoryless' property: the future state depends only on the current state, not on the path taken to get there. Its dynamics are completely described by a transition matrix.\n\n📚 **For a university student:**  \nA discrete-time Markov chain \\(\\{X_n\\}\\) satisfies \\(\\mathbb P(X_{n+1}=j\\mid X_0,\\dots,X_n)=\\mathbb P(X_{n+1}=j\\mid X_n)\\). The Chapman-Kolmogorov equations provide multi-step transition probabilities.",
+          "chart": "none"
+        },
+        {
+          "id": "u11_t2",
+          "title": "Classification of States",
+          "content": "👶 **For a 5‑year‑old:**  \nSome places you visit often (recurrent), some you might never return to (transient).\n\n🎒 **For a teen:**  \nA state is recurrent if the chain is guaranteed to return to it eventually, and transient if it may never return. We also define periodicity and absorbing states, which help decompose the chain.\n\n📚 **For a university student:**  \nState \\(i\\) is recurrent if \\(\\mathbb P(\\text{return to }i)=1\\), transient otherwise. A chain is irreducible if all states communicate. Period \\(d(i)\\) is the gcd of return times to state \\(i\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u11_t3",
+          "title": "Stationary Distributions & Ergodicity",
+          "content": "👶 **For a 5‑year‑old:**  \nAfter playing a game for a long time, you spend a fixed fraction of time in each state – that's the stationary distribution.\n\n🎒 **For a teen:**  \nA stationary distribution \\(\\pi\\) satisfies \\(\\pi P=\\pi\\). If a chain is ergodic (irreducible and aperiodic), it has a unique stationary distribution that describes the long-run proportion of time spent in each state.\n\n📚 **For a university student:**  \nFor an irreducible, aperiodic Markov chain with stationary distribution \\(\\pi\\), we have \\(P^n(i,j)\\to\\pi(j)\\) as \\(n\\to\\infty\\) for all \\(i,j\\). The detailed balance condition \\(\\pi(i)P(i,j)=\\pi(j)P(j,i)\\) characterizes reversible chains.",
+          "chart": "none"
+        },
+        {
+          "id": "u11_t4",
+          "title": "First Passage & Hitting Times",
+          "content": "👶 **For a 5‑year‑old:**  \nHow long does it take to get from your house to school? That's a hitting time.\n\n🎒 **For a teen:**  \nThe hitting probability is the probability that the chain, starting from one state, will ever reach another. The first passage time is the expected number of steps it takes to do so.\n\n📚 **For a university student:**  \nFor states \\(i,j\\), the hitting time \\(T_j=\\inf\\{n\\ge 0:X_n=j\\}\\) and the probability \\(h_i(j)=\\mathbb P_i(T_j<\\infty)\\). These quantities satisfy systems of linear equations derived from the Markov property.",
+          "chart": "none"
+        },
+        {
+          "id": "u11_t5",
+          "title": "Applications of Markov Chains",
+          "content": "👶 **For a 5‑year‑old:**  \nMarkov chains model games, weather patterns, and even how websites are ranked in search engines.\n\n🎒 **For a teen:**  \nMarkov chains are used to model random walks on graphs, form the core of Google's PageRank algorithm, and describe processes in population genetics like the Moran model.\n\n📚 **For a university student:**  \nApplications include queueing theory, Markov chain Monte Carlo (MCMC) methods for Bayesian inference, hidden Markov models in speech recognition, and reliability theory.",
+          "chart": "none"
+        }
+      ],
+      "references": "Norris – Markov Chains (chapters 1‑3); Levin, Peres & Wilmer – Markov Chains and Mixing Times",
+      "assessment": "Compute stationary distribution for a given transition matrix; simulate a random walk on a grid"
+    },
+    {
+      "unitNumber": 12,
+      "title": "Continuous-Time Stochastic Processes (Poisson & Renewal)",
+      "duration": "2 weeks",
+      "prereqs": "Unit 11; basic measure theory",
+      "objectives": [
+        "Introduce point processes and renewal theory, the building blocks of continuous time models"
+      ],
+      "coreTopics": [
+        {
+          "id": "u12_t1",
+          "title": "The Poisson Process",
+          "content": "👶 **For a 5‑year‑old:**  \nImagine cars arriving at a toll booth at completely random times – that's a Poisson process!\n\n🎒 **For a teen:**  \nThe Poisson process is the most fundamental continuous-time counting process. It can be constructed by assuming that the times between successive events (inter-arrival times) are independent and exponentially distributed.\n\n📚 **For a university student:**  \nA Poisson process \\(N(t)\\) with rate \\(\\lambda\\) satisfies: (i) \\(N(0)=0\\), (ii) independent increments, (iii) \\(N(t)-N(s)\\sim\\text{Poisson}(\\lambda(t-s))\\) for \\(s<t\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u12_t2",
+          "title": "Modifications of Poisson Processes",
+          "content": "👶 **For a 5‑year‑old:**  \nYou can make the car arrivals faster, slower, or give each car a random number of passengers.\n\n🎒 **For a teen:**  \nA compound Poisson process allows each event to have a random 'size'. Thinning involves keeping each event with a certain probability. Superposition combines multiple independent Poisson processes.\n\n📚 **For a university student:**  \nIf \\(\\{N_i(t)\\}\\) are independent Poisson processes with rates \\(\\lambda_i\\), then \\(\\sum N_i(t)\\) is Poisson with rate \\(\\sum\\lambda_i\\). Thinning: if each event is kept with probability \\(p\\), the resulting process is Poisson with rate \\(p\\lambda\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u12_t3",
+          "title": "Renewal Processes & Reward Theorem",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you replace light bulbs when they burn out, the pattern of replacements is a renewal process.\n\n🎒 **For a teen:**  \nA renewal process is a generalization of the Poisson process where the inter-arrival times are independent and identically distributed, but not necessarily exponential. The Renewal Reward Theorem relates long-run average reward to expected reward per cycle.\n\n📚 **For a university student:**  \nLet \\(S_n\\) be renewal times with inter-arrival distribution \\(F\\). The renewal function \\(m(t)=\\mathbb E[N(t)]\\). The Renewal Reward Theorem: \\(\\lim_{t\\to\\infty}\\frac{1}{t}\\int_0^t R(s)ds=\\frac{\\mathbb E[R_1]}{\\mathbb E[X_1]}\\) under mild conditions.",
+          "chart": "none"
+        },
+        {
+          "id": "u12_t4",
+          "title": "Non-Homogeneous Poisson Processes",
+          "content": "👶 **For a 5‑year‑old:**  \nSometimes cars arrive more frequently during rush hour – that's a non-homogeneous process.\n\n🎒 **For a teen:**  \nA non-homogeneous Poisson process has a time-varying intensity function \\(\\lambda(t)\\). The expected number of events in \\([s,t]\\) is \\(\\int_s^t\\lambda(u)du\\).\n\n📚 **For a university student:**  \nA non-homogeneous Poisson process with intensity \\(\\lambda(t)\\) can be transformed into a homogeneous one by time-changing: \\(N(t)=\\tilde N(\\int_0^t\\lambda(s)ds)\\) where \\(\\tilde N\\) is a standard Poisson process.",
+          "chart": "none"
+        },
+        {
+          "id": "u12_t5",
+          "title": "Applications in Queueing & Reliability",
+          "content": "👶 **For a 5‑year‑old:**  \nThese processes help understand waiting lines at stores and when machines might break down.\n\n🎒 **For a teen:**  \nContinuous-time processes model queueing systems (like M/M/1 queues), reliability engineering (failure and replacement of components), and insurance claim processes.\n\n📚 **For a university student:**  \nThe M/M/1 queue has Poisson arrivals, exponential service times, and one server. Its stationary distribution is geometric. Renewal processes model cumulative damage processes in reliability theory.",
+          "chart": "none"
+        }
+      ],
+      "references": "Ross – Stochastic Processes (chapters 5‑6); Cinlar – Introduction to Stochastic Processes",
+      "assessment": "Derive the distribution of inter-arrival times; simulate an M/M/1 queue"
+    },
+    {
+      "unitNumber": 13,
+      "title": "Brownian Motion & Stochastic Calculus (Foundations)",
+      "duration": "3 weeks",
+      "prereqs": "Units 9, 12; familiarity with measure theory; basic real analysis",
+      "objectives": [
+        "Master continuous-time martingales, Brownian motion, and the Itô integral"
+      ],
+      "coreTopics": [
+        {
+          "id": "u13_t1",
+          "title": "Construction of Brownian Motion",
+          "content": "👶 **For a 5‑year‑old:**  \nBrownian motion is like the random jiggling of dust particles in sunlight – continuous but very erratic!\n\n🎒 **For a teen:**  \nBrownian motion (Wiener process) is a continuous-time stochastic process with stationary independent increments that are normally distributed. It's the limit of random walks as step size goes to zero.\n\n📚 **For a university student:**  \nA standard Brownian motion \\(B(t)\\) satisfies: (i) \\(B(0)=0\\), (ii) independent increments, (iii) \\(B(t)-B(s)\\sim N(0,t-s)\\), (iv) continuous paths. Construction via Wiener's theorem or as limit of random walks.",
+          "chart": "none"
+        },
+        {
+          "id": "u13_t2",
+          "title": "Sample-Path Properties",
+          "content": "👶 **For a 5‑year‑old:**  \nIf you try to draw a Brownian motion path, it's so wiggly you can't draw a tangent line at any point!\n\n🎒 **For a teen:**  \nBrownian motion paths are continuous but nowhere differentiable. They have infinite variation on any interval but finite quadratic variation.\n\n📚 **For a university student:**  \nBrownian motion has modulus of continuity \\(|B(t+h)-B(t)|=O(\\sqrt{h\\log(1/h)})\\) a.s. It is nowhere differentiable, and its quadratic variation \\([B]_t=t\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u13_t3",
+          "title": "Martingale Properties",
+          "content": "👶 **For a 5‑year‑old:**  \nBrownian motion is the 'fairest' continuous game – no matter when you look, the expected future position is exactly where you are now.\n\n🎒 **For a teen:**  \nBrownian motion is a martingale: \\(\\mathbb E[B(t)\\mid\\mathcal F_s]=B(s)\\) for \\(s<t\\). It also has the strong Markov property.\n\n📚 **For a university student:**  \n\\(B(t)\\), \\(B(t)^2-t\\), and \\(e^{\\theta B(t)-\\frac12\\theta^2 t}\\) are all martingales. The strong Markov property states that for any stopping time \\(\\tau\\), \\(B(\\tau+\\cdot)-B(\\tau)\\) is again a Brownian motion.",
+          "chart": "none"
+        },
+        {
+          "id": "u13_t4",
+          "title": "Stochastic Integral (Itô)",
+          "content": "👶 **For a 5‑year‑old:**  \nAdding up lots of tiny random kicks over time requires a special kind of integral that respects the randomness.\n\n🎒 **For a teen:**  \nThe Itô integral \\(\\int_0^t H(s)dB(s)\\) is defined for processes \\(H(s)\\) that are 'non-anticipating' (can't see the future). It has zero mean and variance \\(\\int_0^t \\mathbb E[H(s)^2]ds\\).\n\n📚 **For a university student:**  \nThe Itô integral is constructed as the \\(L^2\\)-limit of simple processes. Itô isometry: \\(\\mathbb E[(\\int_0^t H dB)^2]=\\mathbb E[\\int_0^t H^2 ds]\\). The integral is a martingale when \\(H\\) is bounded.",
+          "chart": "none"
+        },
+        {
+          "id": "u13_t5",
+          "title": "Itô's Formula",
+          "content": "👶 **For a 5‑year‑old:**  \nThe chain rule for random functions has an extra term because of all the wiggling!\n\n🎒 **For a teen:**  \nItô's formula tells us how to differentiate functions of Brownian motion: \\(df(B(t))=f'(B(t))dB(t)+\\frac12 f''(B(t))dt\\).\n\n📚 **For a university student:**  \nFor \\(f\\in C^2\\), \\(f(B(t))=f(0)+\\int_0^t f'(B(s))dB(s)+\\frac12\\int_0^t f''(B(s))ds\\). The extra term arises from the quadratic variation of Brownian motion.",
+          "chart": "none"
+        },
+        {
+          "id": "u13_t6",
+          "title": "Stochastic Differential Equations (SDEs)",
+          "content": "👶 **For a 5‑year‑old:**  \nSome processes evolve according to rules that have both predictable trends and random shocks.\n\n🎒 **For a teen:**  \nAn SDE has the form \\(dX(t)=\\mu(t,X(t))dt+\\sigma(t,X(t))dB(t)\\). Solutions are called diffusion processes.\n\n📚 **For a university student:**  \nUnder Lipschitz and growth conditions on \\(\\mu\\) and \\(\\sigma\\), the SDE has a unique strong solution. The solution is a Markov process with generator \\(Lf=\\mu f'+\\frac12\\sigma^2 f''\\).",
+          "chart": "none"
+        }
+      ],
+      "references": "Øksendal – Stochastic Differential Equations (Chapters 1‑3); Karatzas & Shreve – Brownian Motion and Stochastic Calculus (Chapter 1)",
+      "assessment": "Prove that Brownian motion has quadratic variation equal to t; apply Itô's formula to compute d(exp(W_t))"
+    },
+    {
+      "unitNumber": 14,
+      "title": "Advanced Stochastic Differential Equations & Applications",
+      "duration": "2 weeks",
+      "prereqs": "Unit 13",
+      "objectives": [
+        "Solve and analyze SDEs beyond the basic cases; introduce numerical schemes and applications"
+      ],
+      "coreTopics": [
+        {
+          "id": "u14_t1",
+          "title": "Linear SDEs",
+          "content": "👶 **For a 5‑year‑old:**  \nSome random processes grow or shrink in a straight-line way, but with random wiggles added.\n\n🎒 **For a teen:**  \nLinear SDEs have coefficients that are linear functions of the state variable. Examples include geometric Brownian motion and the Ornstein-Uhlenbeck process.\n\n📚 **For a university student:**  \nThe linear SDE \\(dX(t)=(a(t)X(t)+b(t))dt+(c(t)X(t)+d(t))dB(t)\\) can be solved explicitly using variation of constants. The solution is Gaussian if the initial condition is Gaussian or deterministic.",
+          "chart": "none"
+        },
+        {
+          "id": "u14_t2",
+          "title": "Ornstein-Uhlenbeck Process",
+          "content": "👶 **For a 5‑year‑old:**  \nThis process likes to return to a 'comfort zone' but gets randomly pushed away – like a spring with random kicks!\n\n🎒 **For a teen:**  \nThe Ornstein-Uhlenbeck process \\(dX(t)=-\\theta X(t)dt+\\sigma dB(t)\\) models mean-reverting behavior. It has a stationary normal distribution.\n\n📚 **For a university student:**  \nThe OU process is the unique stationary Gaussian Markov process. Its transition density is normal with mean \\(e^{-\\theta t}x\\) and variance \\(\\frac{\\sigma^2}{2\\theta}(1-e^{-2\\theta t})\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u14_t3",
+          "title": "Numerical Schemes for SDEs",
+          "content": "👶 **For a 5‑year‑old:**  \nWe can approximate complicated random paths by taking lots of small steps and adding randomness at each step.\n\n🎒 **For a teen:**  \nThe Euler-Maruyama scheme approximates the solution by \\(X_{n+1}=X_n+\\mu(t_n,X_n)\\Delta t+\\sigma(t_n,X_n)\\Delta B_n\\). More accurate schemes include Milstein's method.\n\n📚 **For a university student:**  \nThe Euler scheme has strong order 0.5 and weak order 1. Milstein's scheme (including the correction for the diffusion term) has strong order 1. Convergence is proved under Lipschitz conditions.",
+          "chart": "none"
+        },
+        {
+          "id": "u14_t4",
+          "title": "Applications in Finance",
+          "content": "👶 **For a 5‑year‑old:**  \nStock prices can be modeled as random processes with an overall trend plus random fluctuations.\n\n🎒 **For a teen:**  \nGeometric Brownian motion \\(dS(t)=\\mu S(t)dt+\\sigma S(t)dB(t)\\) is the basis of the Black-Scholes model for option pricing.\n\n📚 **For a university student:**  \nThe Black-Scholes equation \\(\\frac{\\partial V}{\\partial t}+\\frac12\\sigma^2 S^2\\frac{\\partial^2 V}{\\partial S^2}+rS\\frac{\\partial V}{\\partial S}-rV=0\\) prices European options. The solution is obtained via risk-neutral valuation.",
+          "chart": "none"
+        }
+      ],
+      "references": "Kloeden & Platen – Numerical Solution of Stochastic Differential Equations; Øksendal – Chapter 5",
+      "assessment": "Derive the transition density of Ornstein-Uhlenbeck process; implement Milstein scheme for SDE with multiplicative noise"
+    },
+    {
+      "unitNumber": 15,
+      "title": "Lévy Processes & Jump Diffusions",
+      "duration": "2 weeks",
+      "prereqs": "Units 12, 13, 14",
+      "objectives": [
+        "Extend continuous-time models to include jumps and heavy-tailed phenomena"
+      ],
+      "coreTopics": [
+        {
+          "id": "u15_t1",
+          "title": "Definition of Lévy Processes",
+          "content": "👶 **For a 5‑year‑old:**  \nSome random processes can have both continuous wiggles and sudden jumps – that's a Lévy process!\n\n🎒 **For a teen:**  \nA Lévy process has stationary independent increments and is continuous in probability. Brownian motion and Poisson processes are special cases.\n\n📚 **For a university student:**  \nA Lévy process \\(X(t)\\) satisfies: (i) \\(X(0)=0\\), (ii) independent increments, (iii) stationary increments, (iv) stochastically continuous. Its characteristic function is given by the Lévy-Khintchine formula.",
+          "chart": "none"
+        },
+        {
+          "id": "u15_t2",
+          "title": "Lévy-Khintchine Formula",
+          "content": "👶 **For a 5‑year‑old:**  \nThis formula tells us everything about a Lévy process by describing its continuous part, jump rate, and jump sizes.\n\n🎒 **For a teen:**  \nThe Lévy-Khintchine formula expresses the characteristic function of a Lévy process in terms of a drift term, a Brownian motion term, and a jump measure.\n\n📚 **For a university student:**  \n\\(\\mathbb E[e^{i\\theta X(t)}]=\\exp(t[i\\theta b-\\frac12\\theta^2 a+\\int_{\\mathbb R}(e^{i\\theta x}-1-i\\theta x\\mathbf 1_{|x|<1})\\nu(dx)])\\), where \\(a\\ge0\\), \\(b\\in\\mathbb R\\), and \\(\\nu\\) is the Lévy measure.",
+          "chart": "none"
+        },
+        {
+          "id": "u15_t3",
+          "title": "Jump Diffusions",
+          "content": "👶 **For a 5‑year‑old:**  \nA jump diffusion is like Brownian motion but with occasional sudden jumps added.\n\n🎒 **For a teen:**  \nA jump diffusion process has the form \\(dX(t)=\\mu(t,X(t))dt+\\sigma(t,X(t))dB(t)+dJ(t)\\), where \\(J(t)\\) is a compound Poisson process.\n\n📚 **For a university student:**  \nThe generator of a jump diffusion is \\(Lf(x)=\\mu f'(x)+\\frac12\\sigma^2 f''(x)+\\int(f(x+y)-f(x))\\nu(dy)\\). Itô's formula for jump processes includes an additional term for the jumps.",
+          "chart": "none"
+        },
+        {
+          "id": "u15_t4",
+          "title": "Applications in Finance & Insurance",
+          "content": "👶 **For a 5‑year‑old:**  \nStock prices sometimes have big crashes or rallies – jump processes help model these sudden moves.\n\n🎒 **For a teen:**  \nMerton's jump-diffusion model adds Poisson jumps to geometric Brownian motion to capture market crashes. In insurance, compound Poisson processes model the arrival of claims.\n\n📚 **For a university student:**  \nIn the Merton model, stock prices follow \\(dS(t)/S(t)=\\mu dt+\\sigma dB(t)+dJ(t)\\) where \\(J(t)\\) is a compound Poisson process with log-normal jump sizes. Option pricing requires solving a partial integro-differential equation.",
+          "chart": "none"
+        }
+      ],
+      "references": "Sato – Lévy Processes and Infinitely Divisible Distributions (Chapters 1‑2); Applebaum – Lévy Processes and Stochastic Calculus",
+      "assessment": "Simulate a Merton jump-diffusion process; compute characteristic function using Lévy-Khintchine"
+    },
+    {
+      "unitNumber": 16,
+      "title": "Large Deviations Theory",
+      "duration": "2 weeks",
+      "prereqs": "Units 6, 9, 13 (basic probability and limit theorems)",
+      "objectives": [
+        "Quantify the exponential decay of rare-event probabilities"
+      ],
+      "coreTopics": [
+        {
+          "id": "u16_t1",
+          "title": "Cramér's Theorem",
+          "content": "👶 **For a 5‑year‑old:**  \nLarge deviations theory tells us exactly how tiny the chance is of seeing something very different from the average.\n\n🎒 **For a teen:**  \nCramér's theorem gives the exponential rate of decay for the probability that the sample mean of i.i.d. random variables deviates far from the true mean.\n\n📚 **For a university student:**  \nFor i.i.d. \\(X_i\\) with cumulant generating function \\(\\Lambda(\\theta)=\\log\\mathbb E[e^{\\theta X_1}]\\), the rate function is \\(I(x)=\\sup_{\\theta}[\\theta x-\\Lambda(\\theta)]\\). Then \\(\\mathbb P(\\bar X_n\\in A)\\approx e^{-n\\inf_{x\\in A}I(x)}\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u16_t2",
+          "title": "Gärtner-Ellis Theorem",
+          "content": "👶 **For a 5‑year‑old:**  \nThis theorem extends large deviations to more general sequences that might not be independent or identically distributed.\n\n🎒 **For a teen:**  \nThe Gärtner-Ellis theorem provides large deviations principles for sequences that satisfy certain conditions on their scaled cumulant generating functions.\n\n📚 **For a university student:**  \nIf the limit \\(\\Lambda(\\theta)=\\lim_{n\\to\\infty}\\frac{1}{n}\\log\\mathbb E[e^{\\theta S_n}]\\) exists and is differentiable, then \\(\\{S_n/n\\}\\) satisfies an LDP with rate function \\(I(x)=\\sup_{\\theta}[\\theta x-\\Lambda(\\theta)]\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u16_t3",
+          "title": "Sanov's Theorem",
+          "content": "👶 **For a 5‑year‑old:**  \nSanov's theorem tells us how unlikely it is to see an unusual pattern in a long sequence of observations.\n\n🎒 **For a teen:**  \nSanov's theorem gives large deviations for the empirical distribution of i.i.d. random variables. It measures how far the observed frequencies can deviate from the true probabilities.\n\n📚 **For a university student:**  \nLet \\(L_n=\\frac{1}{n}\\sum_{i=1}^n\\delta_{X_i}\\) be the empirical measure. Sanov's theorem states that \\(\\mathbb P(L_n\\in A)\\approx e^{-n\\inf_{\\mu\\in A}H(\\mu|\\nu)}\\), where \\(H\\) is the relative entropy.",
+          "chart": "none"
+        },
+        {
+          "id": "u16_t4",
+          "title": "Applications",
+          "content": "👶 **For a 5‑year‑old:**  \nLarge deviations help understand very unlikely events in physics, communication systems, and finance.\n\n🎒 **For a teen:**  \nApplications include statistical physics (free energy), queueing theory (buffer overflow), information theory (error exponents), and risk management (rare events).\n\n📚 **For a university student:**  \nIn statistical mechanics, large deviations principles yield the equivalence of ensembles. In information theory, they give error exponents in hypothesis testing. In finance, they quantify the risk of large losses.",
+          "chart": "none"
+        }
+      ],
+      "references": "Dembo & Zeitouni – Large Deviations Techniques and Applications (Chapters 1‑3)",
+      "assessment": "Compute the rate function for a Bernoulli sum; verify Gärtner-Ellis conditions for a non-i.i.d. sequence"
+    },
+    {
+      "unitNumber": 17,
+      "title": "Concentration Inequalities & High-Dimensional Probability",
+      "duration": "2 weeks",
+      "prereqs": "Units 5, 6, 16; linear algebra basics",
+      "objectives": [
+        "Master modern tools for bounding fluctuations of functions of many random variables"
+      ],
+      "coreTopics": [
+        {
+          "id": "u17_t1",
+          "title": "Sub-Gaussian & Sub-Exponential Tails",
+          "content": "👶 **For a 5‑year‑old:**  \nSome random variables have tails that decrease very fast (like the normal distribution), others decrease more slowly.\n\n🎒 **For a teen:**  \nA sub-Gaussian random variable has tails that decay at least as fast as a Gaussian. Sub-exponential variables have slightly heavier tails but still controlled decay.\n\n📚 **For a university student:**  \n\\(X\\) is sub-Gaussian if \\(\\mathbb P(|X|>t)\\le 2\\exp(-t^2/K^2)\\) for some \\(K>0\\). Equivalently, \\(\\mathbb E[e^{\\theta X}]\\le e^{\\theta^2 K^2/2}\\) for all \\(\\theta\\). Sub-exponential: \\(\\mathbb P(|X|>t)\\le 2\\exp(-t/K)\\) for large \\(t\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u17_t2",
+          "title": "Hoeffding, Bernstein, McDiarmid Inequalities",
+          "content": "👶 **For a 5‑year‑old:**  \nThese inequalities give us mathematical 'safety nets' that tell us how unlikely it is for a sum of random variables to deviate far from its average.\n\n🎒 **For a teen:**  \nHoeffding's inequality bounds sums of bounded independent variables. Bernstein's inequality incorporates variance information. McDiarmid's inequality applies to functions with bounded differences.\n\n📚 **For a university student:**  \nHoeffding: if \\(X_i\\) independent and bounded in \\([a_i,b_i]\\), then \\(\\mathbb P(\\sum(X_i-\\mathbb E X_i)\\ge t)\\le\\exp(-2t^2/\\sum(b_i-a_i)^2)\\). McDiarmid: if \\(f\\) has bounded differences \\(c_i\\), then \\(\\mathbb P(|f-\\mathbb E f|\\ge t)\\le 2\\exp(-2t^2/\\sum c_i^2)\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u17_t3",
+          "title": "Talagrand's Inequality",
+          "content": "👶 **For a 5‑year‑old:**  \nTalagrand's inequality is a super-powerful concentration result that works for many complicated functions of random variables.\n\n🎒 **For a teen:**  \nTalagrand's concentration inequality provides sharp bounds for functions that are 'Lipschitz' with respect to a certain distance. It's particularly useful in high-dimensional settings.\n\n📚 **For a university student:**  \nTalagrand's convex distance inequality: for independent \\(X_i\\) and any \\(A\\subseteq\\mathbb R^n\\), \\(\\mathbb P(X\\in A)\\mathbb P(d_T(X,A)\\ge t)\\le e^{-t^2/4}\\), where \\(d_T\\) is Talagrand's convex distance.",
+          "chart": "none"
+        },
+        {
+          "id": "u17_t4",
+          "title": "Applications in High Dimensions",
+          "content": "👶 **For a 5‑year‑old:**  \nWhen we have lots and lots of variables (like in big data), concentration inequalities tell us that averages tend to be very stable.\n\n🎒 **For a teen:**  \nConcentration inequalities are crucial in machine learning (generalization bounds), random matrix theory (eigenvalue concentration), and compressed sensing (signal recovery guarantees).\n\n📚 **For a university student:**  \nIn high-dimensional statistics, concentration inequalities provide non-asymptotic guarantees for estimators. They underlie the analysis of LASSO, matrix completion, and deep learning models.",
+          "chart": "none"
+        }
+      ],
+      "references": "Vershynin – High-Dimensional Probability (Chapters 2‑5)",
+      "assessment": "Prove that a sum of bounded independent RVs is sub-Gaussian; apply matrix Bernstein inequality"
+    },
+    {
+      "unitNumber": 18,
+      "title": "Random Matrix Theory",
+      "duration": "2 weeks",
+      "prereqs": "Units 13, 17; basic linear algebra, complex analysis (optional)",
+      "objectives": [
+        "Understand eigenvalue statistics of large random matrices and their universality"
+      ],
+      "coreTopics": [
+        {
+          "id": "u18_t1",
+          "title": "Wigner Matrices & GOE/GUE",
+          "content": "👶 **For a 5‑year‑old:**  \nRandom matrices are like big grids filled with random numbers. Their eigenvalues (special numbers that characterize the matrix) have surprising patterns!\n\n🎒 **For a teen:**  \nA Wigner matrix has independent entries (up to symmetry) with mean 0 and variance 1. GOE (Gaussian Orthogonal Ensemble) and GUE (Gaussian Unitary Ensemble) are special cases with Gaussian entries.\n\n📚 **For a university student:**  \nA Wigner matrix \\(X_n\\) has entries \\(X_{ij}\\) for \\(i\\le j\\) independent with \\(\\mathbb E[X_{ij}]=0\\), \\(\\mathbb E[X_{ij}^2]=1/n\\). GOE: real symmetric with \\(X_{ij}\\sim N(0,1/n)\\) for \\(i<j\\), \\(X_{ii}\\sim N(0,2/n)\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u18_t2",
+          "title": "Semicircle Law",
+          "content": "👶 **For a 5‑year‑old:**  \nWhen you look at the eigenvalues of a large random symmetric matrix, they arrange themselves in a beautiful semicircle shape!\n\n🎒 **For a teen:**  \nWigner's semicircle law states that the eigenvalue distribution of a large symmetric random matrix converges to a semicircle distribution on \\([-2,2]\\).\n\n📚 **For a university student:**  \nFor a Wigner matrix \\(X_n\\), the empirical spectral distribution \\(\\frac{1}{n}\\sum_{i=1}^n\\delta_{\\lambda_i(X_n/\\sqrt{n})}\\) converges weakly to the semicircle law with density \\(\\frac{1}{2\\pi}\\sqrt{4-x^2}\\) on \\([-2,2]\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u18_t3",
+          "title": "Marchenko-Pastur Law",
+          "content": "👶 **For a 5‑year‑old:**  \nFor sample covariance matrices (like measuring many variables on many subjects), the eigenvalues follow a different shaped curve.\n\n🎒 **For a teen:**  \nThe Marchenko-Pastur law describes the eigenvalue distribution of sample covariance matrices when the number of observations and variables both grow large.\n\n📚 **For a university student:**  \nLet \\(X\\) be \\(n\\times p\\) with i.i.d. entries, and let \\(Y=p^{-1}XX^T\\). If \\(n,p\\to\\infty\\) with \\(p/n\\to\\gamma\\), then the eigenvalue distribution converges to the Marchenko-Pastur law.",
+          "chart": "none"
+        },
+        {
+          "id": "u18_t4",
+          "title": "Tracy-Widom Distribution",
+          "content": "👶 **For a 5‑year‑old:**  \nThe largest eigenvalue of a big random matrix has its own special distribution that describes how it fluctuates around the edge of the semicircle.\n\n🎒 **For a teen:**  \nThe Tracy-Widom distribution describes the fluctuations of the largest eigenvalue of a random matrix. It's quite different from the normal distribution!\n\n📚 **For a university student:**  \nFor a Wigner matrix, \\(n^{2/3}(\\lambda_{\\max}-2)\\) converges in distribution to the Tracy-Widom law. This universal distribution appears in many seemingly unrelated areas of mathematics and physics.",
+          "chart": "none"
+        },
+        {
+          "id": "u18_t5",
+          "title": "Applications",
+          "content": "👶 **For a 5‑year‑old:**  \nRandom matrix theory helps understand wireless communication, big data analysis, and even the energy levels of atoms!\n\n🎒 **For a teen:**  \nApplications include wireless communications (MIMO systems), statistical physics (energy levels of heavy nuclei), and high-dimensional statistics (principal component analysis).\n\n📚 **For a university student:**  \nIn statistics, random matrix theory provides null models for hypothesis testing in high dimensions. In physics, it models energy levels in quantum systems. In signal processing, it helps analyze performance of large antenna arrays.",
+          "chart": "none"
+        }
+      ],
+      "references": "Tao – Topics in Random Matrix Theory; Anderson, Guionnet & Zeitouni – An Introduction to Random Matrices",
+      "assessment": "Simulate eigenvalue histograms for GOE matrices; derive Marchenko-Pastur distribution"
+    },
+    {
+      "unitNumber": 19,
+      "title": "Information Theory & Probabilistic Coding",
+      "duration": "2 weeks",
+      "prereqs": "Units 5, 6, 16, 17 (entropy, divergence, concentration)",
+      "objectives": [
+        "Relate probability to information measures, coding limits, and inference"
+      ],
+      "coreTopics": [
+        {
+          "id": "u19_t1",
+          "title": "Entropy, KL-Divergence, Mutual Information",
+          "content": "👶 **For a 5‑year‑old:**  \nEntropy measures how surprised we are by an outcome. KL-divergence measures how different two probability distributions are.\n\n🎒 **For a teen:**  \nEntropy \\(H(X)=-\\sum p(x)\\log p(x)\\) measures uncertainty. KL-divergence \\(D(P||Q)=\\sum p(x)\\log(p(x)/q(x))\\) measures distinguishability. Mutual information \\(I(X;Y)\\) measures dependence.\n\n📚 **For a university student:**  \n\\(H(X)\\) is the expected number of bits needed to describe \\(X\\). \\(D(P||Q)\\) is non-negative and zero iff \\(P=Q\\). \\(I(X;Y)=D(P_{XY}||P_XP_Y)=H(X)-H(X|Y)\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u19_t2",
+          "title": "Source Coding Theorem",
+          "content": "👶 **For a 5‑year‑old:**  \nShannon's source coding theorem tells us the smallest possible size to compress a random message without losing information.\n\n🎒 **For a teen:**  \nThe source coding theorem states that a source can be compressed to rate \\(H(X)\\) bits per symbol asymptotically, but not below that rate without loss.\n\n📚 **For a university student:**  \nFor a stationary ergodic source, the minimal achievable compression rate is the entropy rate. The typical set has about \\(2^{nH}\\) sequences, each with probability about \\(2^{-nH}\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u19_t3",
+          "title": "Channel Coding Theorem",
+          "content": "👶 **For a 5‑year‑old:**  \nThis theorem tells us the maximum rate at which we can send information reliably over a noisy channel.\n\n🎒 **For a teen:**  \nThe channel coding theorem states that reliable communication is possible at any rate below the channel capacity \\(C\\), but not above it.\n\n📚 **For a university student:**  \nFor a discrete memoryless channel, the capacity is \\(C=\\max_{p_X} I(X;Y)\\). The theorem shows that rates below \\(C\\) are achievable using random coding, while rates above \\(C\\) have bounded error probability away from zero.",
+          "chart": "none"
+        },
+        {
+          "id": "u19_t4",
+          "title": "Applications",
+          "content": "👶 **For a 5‑year‑old:**  \nInformation theory helps design efficient data compression (like ZIP files) and error-correcting codes (like in CDs and smartphones).\n\n🎒 **For a teen:**  \nApplications include data compression (ZIP, JPEG), error-correcting codes (Reed-Solomon, Turbo codes), and cryptography (perfect secrecy).\n\n📚 **For a university student:**  \nModern applications include network information theory (multiple users), quantum information theory, and the information bottleneck method in deep learning for understanding generalization.",
+          "chart": "none"
+        }
+      ],
+      "references": "Cover & Thomas – Elements of Information Theory (Chapters 2‑5)",
+      "assessment": "Compute entropy and mutual information for a simple Markov source; design a Huffman code"
+    },
+    {
+      "unitNumber": 20,
+      "title": "Probabilistic Machine Learning (Bayesian Nonparametrics & Gaussian Processes)",
+      "duration": "2 weeks",
+      "prereqs": "Units 5, 6, 10, 13, 17 (basic probability, martingales, stochastic processes)",
+      "objectives": [
+        "Apply advanced probability to modern ML models that treat functions as random objects"
+      ],
+      "coreTopics": [
+        {
+          "id": "u20_t1",
+          "title": "Bayesian Inference Fundamentals",
+          "content": "👶 **For a 5‑year‑old:**  \nBayesian inference is like updating your beliefs as you see new evidence, starting with an initial guess (prior).\n\n🎒 **For a teen:**  \nBayesian inference combines prior knowledge with observed data to form a posterior distribution. The prior represents initial beliefs, the likelihood describes the data given parameters, and the posterior is the updated belief.\n\n📚 **For a university student:**  \nBayes' theorem: \\(p(\\theta|X)=\\frac{p(X|\\theta)p(\\theta)}{p(X)}\\). The posterior distribution incorporates both prior information and data evidence. Conjugate priors yield posteriors in the same family.",
+          "chart": "none"
+        },
+        {
+          "id": "u20_t2",
+          "title": "Dirichlet Process & Chinese Restaurant Process",
+          "content": "👶 **For a 5‑year‑old:**  \nThe Chinese restaurant process describes how customers choose tables in a way that new tables can always be created – perfect for clustering without fixing the number of clusters!\n\n🎒 **For a teen:**  \nThe Dirichlet process is a distribution over distributions. The Chinese restaurant process is a sequential description that makes it easy to understand clustering with an unbounded number of clusters.\n\n📚 **For a university student:**  \nA Dirichlet process \\(DP(\\alpha,H)\\) is a random probability measure such that for any finite partition, the probabilities follow a Dirichlet distribution. The CRP is a sequential construction where the \\(n\\)th customer sits at an existing table with probability proportional to occupancy, or a new table with probability proportional to \\(\\alpha\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u20_t3",
+          "title": "Gaussian Processes",
+          "content": "👶 **For a 5‑year‑old:**  \nA Gaussian process is like having a probability distribution over all possible functions that could fit your data.\n\n🎒 **For a teen:**  \nA Gaussian process defines a distribution over functions where any finite collection of function values has a joint Gaussian distribution. It's completely specified by a mean function and a covariance (kernel) function.\n\n📚 **For a university student:**  \nA GP \\(f(\\cdot)\\sim GP(m(\\cdot),k(\\cdot,\\cdot))\\) is such that \\((f(x_1),\\dots,f(x_n))\\) is multivariate normal with mean \\(m(x_i)\\) and covariance \\(k(x_i,x_j)\\). Posterior inference is analytically tractable for Gaussian likelihoods.",
+          "chart": "none"
+        },
+        {
+          "id": "u20_t4",
+          "title": "Variational Inference & MCMC",
+          "content": "👶 **For a 5‑year‑old:**  \nWhen exact Bayesian computation is too hard, we use clever approximations or random sampling methods.\n\n🎒 **For a teen:**  \nMarkov chain Monte Carlo (MCMC) methods like Metropolis-Hastings and Hamiltonian Monte Carlo draw samples from complex posterior distributions. Variational inference approximates the posterior with a simpler distribution.\n\n📚 **For a university student:**  \nMCMC constructs a Markov chain with the posterior as stationary distribution. Variational inference minimizes \\(KL(q||p)\\) over a tractable family \\(q\\), which is equivalent to maximizing the evidence lower bound (ELBO).",
+          "chart": "none"
+        }
+      ],
+      "references": "Murphy – Probabilistic Machine Learning (chapters 2‑4); Rasmussen & Williams – Gaussian Processes for Machine Learning",
+      "assessment": "Implement a Dirichlet-process mixture model; code GP regression on a 1‑D function"
+    },
+    {
+      "unitNumber": 21,
+      "title": "Interacting Particle Systems & Percolation",
+      "duration": "2 weeks",
+      "prereqs": "Units 11, 12, 16 (Markov chains, renewal, large deviations)",
+      "objectives": [
+        "Study spatial stochastic models with many dependent components"
+      ],
+      "coreTopics": [
+        {
+          "id": "u21_t1",
+          "title": "Contact Process & Voter Model",
+          "content": "👶 **For a 5‑year‑old:**  \nThe contact process models the spread of infection where sick people can make neighbors sick. The voter model describes how opinions spread through a population.\n\n🎒 **For a teen:**  \nThe contact process is a model for the spread of infection on a lattice. The voter model describes consensus formation where individuals adopt neighbors' opinions.\n\n📚 **For a university student:**  \nThe contact process is a continuous-time Markov process where sites can be healthy (0) or infected (1). Infected sites recover at rate 1 and infect neighbors at rate \\(\\lambda\\). The voter model has individuals with opinions 0 or 1; at rate 1, an individual adopts a neighbor's opinion.",
+          "chart": "none"
+        },
+        {
+          "id": "u21_t2",
+          "title": "Percolation Theory",
+          "content": "👶 **For a 5‑year‑old:**  \nPercolation is like seeing if water can seep through randomly placed holes in a barrier. There's a critical point where suddenly it can flow through!\n\n🎒 **For a teen:**  \nIn bond percolation, each edge of a graph is open with probability \\(p\\) independently. The percolation probability is the chance that there's an infinite connected component of open edges.\n\n📚 **For a university student:**  \nThere exists a critical probability \\(p_c\\) such that for \\(p>p_c\\), there is almost surely an infinite cluster, while for \\(p<p_c\\), all clusters are finite. On \\(\\mathbb Z^d\\), \\(0<p_c<1\\) for \\(d\\ge2\\).",
+          "chart": "none"
+        },
+        {
+          "id": "u21_t3",
+          "title": "Phase Transitions & Critical Exponents",
+          "content": "👶 **For a 5‑year‑old:**  \nMany systems have a 'tipping point' where behavior changes dramatically – like water suddenly boiling at 100°C.\n\n🎒 **For a teen:**  \nPhase transitions occur when a small change in a parameter (like infection rate) causes a dramatic change in system behavior. Critical exponents describe how quantities behave near the transition point.\n\n📚 **For a university student:**  \nFor the contact process, there is a critical value \\(\\lambda_c\\) such that the infection survives for \\(\\lambda>\\lambda_c\\) and dies out for \\(\\lambda<\\lambda_c\\). Near criticality, various quantities scale as power laws with universal exponents.",
+          "chart": "none"
+        },
+        {
+          "id": "u21_t4",
+          "title": "Applications",
+          "content": "👶 **For a 5‑year‑old:**  \nThese models help understand disease spread, forest fires, material science, and social networks.\n\n🎒 **For a teen:**  \nApplications include epidemiology (disease modeling), materials science (conductivity of random composites), and sociology (opinion dynamics).\n\n📚 **For a university student:**  \nPercolation theory applies to porous media, disordered magnets, and network robustness. Interacting particle systems model chemical reactions, population dynamics, and traffic flow.",
+          "chart": "none"
+        }
+      ],
+      "references": "Liggett – Interacting Particle Systems; Grimmett – Percolation (chapters 1‑3)",
+      "assessment": "Simulate the contact process on a 2‑D lattice; compute critical percolation probability via Monte-Carlo"
+    }
+  ]
+}

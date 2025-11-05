@@ -1,18 +1,37 @@
-import React, { useState, useMemo } from 'react';
-import { Topic, TopicId } from './types';
-import { UNITS } from './data/lessons';
+import React, { useState, useMemo, useEffect } from 'react';
+import { Unit, TopicId } from './types';
+import { fetchUnits } from './data/lessons';
 import { UserProgressProvider, useUserProgress } from './hooks/useUserProgress';
 import Header from './components/Header';
 import UnitListView from './components/LessonList';
 import TopicView from './components/LessonView';
 import QuizView from './components/QuizView';
+import { Loader2 } from 'lucide-react';
 
 type AppView = 'list' | 'topic' | 'quiz';
 
 const AppContent: React.FC = () => {
+    const [units, setUnits] = useState<Unit[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
     const [currentView, setCurrentView] = useState<AppView>('list');
     const [selectedTopicId, setSelectedTopicId] = useState<TopicId | null>(null);
     const { progress } = useUserProgress();
+
+    useEffect(() => {
+        const loadUnits = async () => {
+            try {
+                const fetchedUnits = await fetchUnits();
+                setUnits(fetchedUnits);
+            } catch (e) {
+                setError(e instanceof Error ? e.message : 'An unknown error occurred.');
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        loadUnits();
+    }, []);
 
     const handleSelectTopic = (topicId: TopicId) => {
         setSelectedTopicId(topicId);
@@ -31,10 +50,28 @@ const AppContent: React.FC = () => {
 
     const selectedTopic = useMemo(() => {
         if (!selectedTopicId) return null;
-        return UNITS.flatMap(u => u.coreTopics).find(t => t.id === selectedTopicId) || null;
-    }, [selectedTopicId]);
+        return units.flatMap(u => u.coreTopics).find(t => t.id === selectedTopicId) || null;
+    }, [selectedTopicId, units]);
 
     const renderContent = () => {
+        if (isLoading) {
+            return (
+                <div className="flex justify-center items-center h-96">
+                    <Loader2 className="w-16 h-16 animate-spin text-primary-500" />
+                    <span className="ml-4 text-lg">Loading Curriculum...</span>
+                </div>
+            );
+        }
+
+        if (error) {
+            return (
+                <div className="text-center p-8 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-300 rounded-lg">
+                    <h2 className="text-xl font-bold mb-2">Failed to Load Curriculum</h2>
+                    <p>{error}</p>
+                </div>
+            );
+        }
+
         switch (currentView) {
             case 'topic':
                 return selectedTopic && (
@@ -56,7 +93,7 @@ const AppContent: React.FC = () => {
             default:
                 return (
                     <UnitListView 
-                        units={UNITS} 
+                        units={units} 
                         onSelectTopic={handleSelectTopic}
                         completedTopics={progress.completedTopics}
                     />
